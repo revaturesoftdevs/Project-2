@@ -1,7 +1,7 @@
 # Project2
 
 
-This is a test of GitHub Desktop
+This is a test of Josh, for the GitHub Desktop 
 
 
 
