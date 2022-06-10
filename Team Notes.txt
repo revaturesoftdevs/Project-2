@@ -1,0 +1,22 @@
+Group 5 Notes:
+
+Choose One
+    - sending email ----- ANIL'S FAULT
+    - forgot password
+    - upload receipt 
+
+Employee
+    - create reimbursement
+    - view resolved reimbursements
+    - view pending reimbursements
+    - view profile
+    - update profile
+
+Manager
+    - view pending reimbursements
+        > approve or deny
+    - view resolved reimbursements
+    - view all employees
+        > button for view reimbursement status of particular employee
+        > drop down w/ reimbursements details
+    
