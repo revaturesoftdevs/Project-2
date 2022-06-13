@@ -20,3 +20,15 @@ Manager
         > button for view reimbursement status of particular employee
         > drop down w/ reimbursements details
     
+
+    BERLY
+        header - employee and Manager
+    
+    ANIL 
+        employee - create reimbursement and view reimbursements
+    
+    GOLDENDEEP 
+        manager - view employees and view reimbursements (pending and resolved)
+    
+    JOSH 
+        login and employee- view profile 
