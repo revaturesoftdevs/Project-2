@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { EmployeeServiceService } from '../employee-service.service';
 import { Reimbursement } from '../employee-view-reimb/reimbursement.model';
 
 @Component({
-  selector: 'app-employee-create-reimb',
+  selector: 'employee-create-reimb',
   templateUrl: './employee-create-reimb.component.html',
   styleUrls: ['./employee-create-reimb.component.css']
 })
@@ -18,7 +16,7 @@ export class EmployeeCreateReimbComponent implements OnInit {
     reimbursementAmt:0
 
   }
-  constructor(activatedRoute:ActivatedRoute, private employeeService:EmployeeServiceService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
