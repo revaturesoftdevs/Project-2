@@ -1,4 +1,4 @@
-    export interface Employee{
+export interface Employee{
     empId: number,
     mgrId: number,
     empFirstName: string,
@@ -6,3 +6,4 @@
     empUserName: string,
     empPassword: string
     }
+

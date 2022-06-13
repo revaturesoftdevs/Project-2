@@ -2,12 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-<<<<<<< Updated upstream
-
-@NgModule({
-  declarations: [
-    AppComponent
-=======
 import { EmployeeProfileComponent } from './employee/employee-profile/employee-profile.component';
 import { EmployeeHeaderComponent } from './employee/employee-header/employee-header.component';
 import { EmployeeViewReimbComponent } from './employee/employee-view-reimb/employee-view-reimb.component';
@@ -31,7 +25,6 @@ import {  HttpClientModule } from '@angular/common/http';
     ManagerHeaderComponent,
     LoginComponent,
     ViewPendingReimbComponent
->>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
