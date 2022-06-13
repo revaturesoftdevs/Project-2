@@ -1,0 +1,26 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Reimbursement Id</th>
+            <th>Employee Id</th>
+            <th>Manager Id</th>
+            <th> Reimbursement Description</th>
+            <th>Reimbursement Amount</th>
+            <th>Reimbursement Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let req of pendingReimbu" >
+            <td>{{req.reimbursementId}}</td>
+            <td>{{req.empId}}</td>
+            <td>{{req.mgrId}}</td>
+            <td>{{req.reimbursementDesc}}</td>
+            <td>{{req.reimbursementAmt}}</td>
+            <td>{{req.reimbursementStatus}}</td>
+            <td><button type="submit" class="btn btn-primary"
+                    (click)="approved()">Approve</button></td>
+            <td><button type="submit" class="btn btn-danger"
+                    (click)="denied()">Deny</button></td>
+        </tr>
+        <!--approved(req.empId,req.reimbursementId)-->
+        <!--denied(req.empId,req.reimbursementId)-->
