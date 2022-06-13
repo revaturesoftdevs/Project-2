@@ -4,6 +4,7 @@ import { ManagerViewEmployeesComponent } from './manager/manager-view-employees/
 import { ManagerViewReimbComponent } from './manager/manager-view-reimb/manager-view-reimb.component';
 import { ViewPendingReimbComponent } from './manager/view-pending-reimb/view-pending-reimb.component';
 import { EmployeeViewReimbComponent } from './employee/employee-view-reimb/employee-view-reimb.component';
+import { EmployeeCreateReimbComponent } from './employee/employee-create-reimb/employee-create-reimb.component';
 
 const routes: Routes = [
 {path:"manager-view",component: ManagerViewEmployeesComponent},
@@ -11,8 +12,10 @@ const routes: Routes = [
 {path:"manager-view-employees", component:ManagerViewEmployeesComponent},
 {path:"view-pending-reimb", component:ViewPendingReimbComponent},
 {path:"manager-view-reimb",component:ManagerViewReimbComponent},
-              ];
+{ path: "employee-create-reimb", component: EmployeeCreateReimbComponent }
 
+              ];
+ 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

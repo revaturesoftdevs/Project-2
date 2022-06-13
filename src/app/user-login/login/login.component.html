@@ -1,3 +1,83 @@
+<<<<<<< HEAD
+<div class="container login-container">
+    <div class="row">
+        <div class="col-md-6 login-form-1">
+            <h3>Employee Login</h3>
+            <form #myForm = "ngForm">
+                <div class="text-danger">{{ invalidMessage }}</div>
+                <div class="form-group">
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Your Username *" 
+                    name="empUserName"
+                    id="empUserName" 
+                    [(ngModel)]="empDetails.empUserName"
+                    required
+                    #empUserName="ngModel"/>
+                <div *ngIf = "!empUserName.valid && empUserName.touched" class="text-danger small">
+                    Username is required!
+                </div>
+                </div>
+                <div class="form-group">
+                    <input 
+                    type="password" 
+                    class="form-control" 
+                    placeholder="Your Password *" 
+                    name="empPassword"
+                    id="empPassword" 
+                    [(ngModel)]="empDetails.empPassword"
+                    required
+                    #empPassword = "ngModel"/>
+                <div *ngIf = "!empPassword.valid && empPassword.touched" class="text-danger small">
+                    Password is required!
+                </div>
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-warning" (click)="empLoginValidation()"
+                        [disabled]="!myForm.valid">Login</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6 login-form-2">
+            <h3>Manager Login</h3>
+            <form #myForm2 = "ngForm">
+                <div class="text-danger">{{ invalidMessage2 }}</div>
+                <div class="form-group">
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Your Username *" 
+                    name="mgrUserName" 
+                    [(ngModel)]="mgrDetails.mgrUserName"
+                    required
+                    #mgrUserName = "ngModel"/>
+                <div *ngIf = "!mgrUserName.valid && mgrUserName.touched" class="text-danger small">
+                    Username is required!
+                </div>
+                </div>
+                <div class="form-group">
+                    <input 
+                    type="password" 
+                    class="form-control" 
+                    placeholder="Your Password *" 
+                    name="mgrPassword"
+                    [(ngModel)]="mgrDetails.mgrPassword"
+                    required
+                    #mgrPassword = "ngModel"/>
+                </div>
+                <div *ngIf = "!mgrPassword.valid && mgrPassword.touched" class="text-danger small">
+                    Password is required!
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-warning" (click)="mgrLoginValidation()"
+                        [disabled]="!myForm2.valid">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+=======
     <div class="container myCon">
         <div class="row  row-cols-lg-2">
             <div class="col infocol">
@@ -54,3 +134,4 @@
         </div>
     </div>
 
+>>>>>>> c04ab44e2941d37aebbf6ba169c7cdddd0edc8c4

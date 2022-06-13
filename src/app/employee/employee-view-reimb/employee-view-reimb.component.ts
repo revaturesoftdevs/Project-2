@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { EmployeeServiceService } from '../employee-service.service';
 import { Reimbursement } from './reimbursement.model';
-import { catchError } from 'rxjs/operators'
+import { EmployeeHttpService } from '../employee-http.service';
 
 @Component({
   selector: 'employee-view-reimb',
@@ -11,7 +9,6 @@ import { catchError } from 'rxjs/operators'
 })
 export class EmployeeViewReimbComponent implements OnInit {
 
-  
   pendReimb: Reimbursement[];  
   shouldDisplay:boolean= false;
   testEmp =5;
@@ -25,11 +22,7 @@ export class EmployeeViewReimbComponent implements OnInit {
 
     };
   
-
-    
-  
-
-  constructor(private employeeService:EmployeeServiceService) {
+  constructor(private employeeService:EmployeeHttpService) {
     this.pendReimb = [];
    }
 
@@ -65,7 +58,5 @@ export class EmployeeViewReimbComponent implements OnInit {
   ngOnInit(): void {
     this.employeeService.getPendReimb().subscribe((response)=>{ this.pendReimb = response});
    }
- 
-
  
 }

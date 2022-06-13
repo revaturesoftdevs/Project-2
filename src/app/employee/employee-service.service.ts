@@ -7,20 +7,17 @@ import { Reimbursement } from './employee-view-reimb/reimbursement.model';
   providedIn: 'root'
 })
 export class EmployeeServiceService {
-  baseUrl:string = 'http://localhost:7474/';
-  
-  
+
+  baseUrl: string = "http://localhost:1111/";
+
   constructor(private http: HttpClient) { }
 
+  getAllPendingReimbursements(): Observable<Reimbursement[]> {
 
-  getPendReimb():Observable<Reimbursement[]>{
-
-    return this.http.get<Reimbursement[]>(this.baseUrl + 'PendingReimbursements/1');
-
+    return this.http.get<Reimbursement[]>(this.baseUrl + "EmpPendingReimbursements/1");
   }
 
-  addReimb(newReimbursement:Reimbursement):Observable<Reimbursement>{
-
-    return this.http.post<Reimbursement>(this.baseUrl + "addReimbursement",newReimbursement);
+  createReimbursement(newReimbursement: Reimbursement) {
+    return this.http.post<Reimbursement>(this.baseUrl + "addReimbursement", newReimbursement);
   }
 }

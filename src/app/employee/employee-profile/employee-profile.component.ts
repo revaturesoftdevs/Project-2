@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Reimbursement } from '../employee-view-reimb/reimbursement.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EmpDetails } from 'src/app/user-login/user.model';
+import { EmployeeHttpService } from '../employee-http.service';
 
 @Component({
   selector: 'employee-profile',
@@ -9,11 +10,18 @@ import { Reimbursement } from '../employee-view-reimb/reimbursement.model';
 })
 export class EmployeeProfileComponent implements OnInit {
 
- 
-
-  constructor() { }
-
-  ngOnInit(): void {
+  updateEmployee: EmpDetails = {
+    empId: 0,
+    mgrId: 0,
+    empFirstName: '',
+    empLastName: '',
+    empUserName: '',
+    empPassword: ''
   }
 
+  constructor(private activatedRoute: ActivatedRoute,
+              private employeeHttpService: EmployeeHttpService,
+              private router: Router) { }
+
+  ngOnInit(): void {}
 }
