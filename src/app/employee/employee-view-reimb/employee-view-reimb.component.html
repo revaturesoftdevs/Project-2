@@ -1,3 +1,4 @@
+
 <h2>Pending Reimbursements</h2>
 <table class="table table-striped">
     <thead>
@@ -35,3 +36,149 @@
         </tr>
     </tbody>
 </table>
+=======
+<div class="container">
+  <div class="row mt-5">
+    <h2>View Reimbursement</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>REIMBURSEMENT ID</td>
+          <td>EMPLOYEE ID</td>
+          <td>MANAGER ID</td>
+          <td>REIMBURSEMENT DESCRIPTION</td>
+          <td>REIMBURSMENT AMOUNT</td>
+          <td>REIMBURSEMENT STATUS</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emplReimb of pendReimb">
+          <td>{{ emplReimb.reimbursementId }}</td>
+          <td>{{ emplReimb.empId }}</td>
+          <td>{{ emplReimb.mgrId }}</td>
+          <td>{{ emplReimb.reimbursementDesc }}</td>
+          <td>{{ emplReimb.reimbursementAmt }}</td>
+          <td>{{ emplReimb.reimbursementStatus }}</td>
+          <td>
+            <!-- <button
+                            type="button"
+                            class="btn btn-primary"
+                            (click)="goToEditBook(book.id)">
+                                <i class="material-icons">edit</i>
+                        </button> -->
+          </td>
+          <td>
+            <!-- <button
+                        type="button"
+                        class="btn btn-danger"
+                        (click)="deleteBook(book.id)">
+                            <i class="material-icons">delete</i>
+                    </button> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- <div class="container"> -->
+    <div class="row mt-5">
+      <div class="col-2"></div>
+      <div class="col-8">
+        <button type="button" class="btn btn-success" (click)="displayForm()">
+          Create A New Request
+        </button>
+        <div *ngIf="shouldDisplay">
+          <div class="container">
+            <form>
+              <div class="card m-3">
+                <div class="card-header bg-primary text-light">REIMBURSEMENT FORM</div>
+                <div class="card-body">
+                  <div class="mb-3 mt-3">
+                    <label for="EId" class="form-label">Employee ID:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="eId"
+                      placeholder="Enter Employee Id"
+                      name="employee-Id"
+                      [(ngModel)]="newReimb.empId"
+                      #eId="ngModel"
+                      required
+                    />
+
+                    <div
+                      *ngIf="!eId.valid && eId.touched"
+                      class="text-danger small"
+                    >
+                      Employee Id Required!
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="mId" class="form-label">Manager ID:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="mId"
+                      placeholder="Enter Manager Id"
+                      name="managerId"
+                      [(ngModel)]="newReimb.mgrId"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="rDesc" class="form-label"
+                      >Reimbursement Description:</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="rDesc"
+                      placeholder="Enter Reimbursement Description"
+                      name="reimbursementDesc"
+                      [(ngModel)]="newReimb.reimbursementDesc"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="rAmt" class="form-label"
+                      >Reimbursement Description:</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="rAmt"
+                      placeholder="Enter Reimbursement Amount"
+                      name="reimbursementAmt"
+                      [(ngModel)]="newReimb.reimbursementAmt"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="bImage" class="form-label"
+                      >Reimbursement Status:</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="rStatus"
+                      placeholder="Enter Reimbursement Status"
+                      name="rStatus"
+                      [(ngModel)]="newReimb.reimbursementStatus"
+                    />
+                  </div>
+                </div>
+                <div class="card-footer bg-primary">
+                  <button
+                    type="button"
+                    class="btn btn-success"
+                    (click)="addReimb()"
+                  >
+                    Submit Reimbursement Request
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

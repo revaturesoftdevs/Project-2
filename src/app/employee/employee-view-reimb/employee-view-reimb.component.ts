@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeServiceService } from '../employee-service.service';
 import { Reimbursement } from './reimbursement.model';
+import { EmployeeHttpService } from '../employee-http.service';
 
 @Component({
   selector: 'employee-view-reimb',
@@ -9,17 +9,54 @@ import { Reimbursement } from './reimbursement.model';
 })
 export class EmployeeViewReimbComponent implements OnInit {
 
-  allReimbursements: Reimbursement[];
+  pendReimb: Reimbursement[];  
+  shouldDisplay:boolean= false;
+  testEmp =5;
+  newReimb:Reimbursement ={
+    reimbursementId: 0,
+    empId:0,
+    mgrId:0,
+    reimbursementDesc:'',
+    reimbursementStatus:'',
+    reimbursementAmt: 0
 
-  constructor(private employeeService: EmployeeServiceService) {
-    this.allReimbursements = [];
+    };
+  
+  constructor(private employeeService:EmployeeHttpService) {
+    this.pendReimb = [];
+   }
+
+  getPendReimb(){
+    this.employeeService.getPendReimb();
+  }
+  displayForm(){
+    if(this.shouldDisplay){
+      this.shouldDisplay = false;
+    }else{
+      this.shouldDisplay = true;
+    }
   }
 
-  ngOnInit(): void {
-    this.employeeService.getAllPendingReimbursements().subscribe(response => {
+  addReimb(){
+    this.employeeService.addReimb(this.newReimb).subscribe((response)=>{
       console.log(response);
-      this.allReimbursements = response;
-    })
-  }
+      
+      this.newReimb ={
+        reimbursementId: 0,
+        empId:0,
+        mgrId:0,
+        reimbursementDesc:'',
+        reimbursementStatus:'',
+        reimbursementAmt: 0
+    
+      }
 
+      this.shouldDisplay = false;
+    })
+
+  }
+  ngOnInit(): void {
+    this.employeeService.getPendReimb().subscribe((response)=>{ this.pendReimb = response});
+   }
+ 
 }

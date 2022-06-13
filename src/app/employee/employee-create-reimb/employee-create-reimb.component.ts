@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { EmployeeServiceService } from '../employee-service.service';
 import { Reimbursement } from '../employee-view-reimb/reimbursement.model';
 
 @Component({
@@ -19,7 +18,7 @@ export class EmployeeCreateReimbComponent implements OnInit {
     reimbursementAmt: 0
   }
 
-  constructor(private employeeService: EmployeeServiceService, private router: Router) { }
+  constructor(private employeeService: EmployeeHttpService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -44,6 +43,5 @@ export class EmployeeCreateReimbComponent implements OnInit {
       // toggle/hide the Add Form
       // this.shouldDisplay = false;
     })
-  }
 
 }

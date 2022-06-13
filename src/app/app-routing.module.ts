@@ -5,8 +5,7 @@ import { EmployeeViewReimbComponent } from './employee/employee-view-reimb/emplo
 
 const routes: Routes = [
   { path: "employee-view-reimb", component: EmployeeViewReimbComponent },
-  { path: "employee-create-reimb", component: EmployeeCreateReimbComponent },
-];
+  { path: "employee-create-reimb", component: EmployeeCreateReimbComponent }
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

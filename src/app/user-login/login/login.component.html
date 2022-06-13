@@ -1,0 +1,137 @@
+<<<<<<< HEAD
+<div class="container login-container">
+    <div class="row">
+        <div class="col-md-6 login-form-1">
+            <h3>Employee Login</h3>
+            <form #myForm = "ngForm">
+                <div class="text-danger">{{ invalidMessage }}</div>
+                <div class="form-group">
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Your Username *" 
+                    name="empUserName"
+                    id="empUserName" 
+                    [(ngModel)]="empDetails.empUserName"
+                    required
+                    #empUserName="ngModel"/>
+                <div *ngIf = "!empUserName.valid && empUserName.touched" class="text-danger small">
+                    Username is required!
+                </div>
+                </div>
+                <div class="form-group">
+                    <input 
+                    type="password" 
+                    class="form-control" 
+                    placeholder="Your Password *" 
+                    name="empPassword"
+                    id="empPassword" 
+                    [(ngModel)]="empDetails.empPassword"
+                    required
+                    #empPassword = "ngModel"/>
+                <div *ngIf = "!empPassword.valid && empPassword.touched" class="text-danger small">
+                    Password is required!
+                </div>
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-warning" (click)="empLoginValidation()"
+                        [disabled]="!myForm.valid">Login</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6 login-form-2">
+            <h3>Manager Login</h3>
+            <form #myForm2 = "ngForm">
+                <div class="text-danger">{{ invalidMessage2 }}</div>
+                <div class="form-group">
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Your Username *" 
+                    name="mgrUserName" 
+                    [(ngModel)]="mgrDetails.mgrUserName"
+                    required
+                    #mgrUserName = "ngModel"/>
+                <div *ngIf = "!mgrUserName.valid && mgrUserName.touched" class="text-danger small">
+                    Username is required!
+                </div>
+                </div>
+                <div class="form-group">
+                    <input 
+                    type="password" 
+                    class="form-control" 
+                    placeholder="Your Password *" 
+                    name="mgrPassword"
+                    [(ngModel)]="mgrDetails.mgrPassword"
+                    required
+                    #mgrPassword = "ngModel"/>
+                </div>
+                <div *ngIf = "!mgrPassword.valid && mgrPassword.touched" class="text-danger small">
+                    Password is required!
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-warning" (click)="mgrLoginValidation()"
+                        [disabled]="!myForm2.valid">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+=======
+    <div class="container myCon">
+        <div class="row  row-cols-lg-2">
+            <div class="col infocol">
+                <div class="card ab">
+                    <img src="https://media.istockphoto.com/photos/were-always-hungry-for-success-picture-id1330547182?s=612x612"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <div class="row justify-content-md-center g-0">
+                            <div class="col-sm-12 col-md-6 col-lg-3 loginfo ">
+                                <div class="mb-3">
+                                    <label for="userName" class="form-label custlabel">User Name</label>
+                                    <input type="text" class="form-control custinput" id="userName"
+                                        aria-describedby="emailHelp">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-3 loginfo">
+                                <div class="mb-3">
+                                    <label for="passwordEmp" class="form-label custlabel">Password</label>
+                                    <input type="empPassword" class="form-control " id="passwordEmp">
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <button type="button" class="btn btn-success"  onclick="employeeLogin()">Employee Login</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col infocol">
+                <div class="card ab">
+                    <img src="https://media.istockphoto.com/photos/successful-partnership-picture-id1365436662?s=612x612"
+                        class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <div class="row justify-content-md-center ">
+                                <div class="col-sm-12 col-md-6 col-lg-3 loginfo ">
+                                    <div class="mb-3">
+                                        <label for="userName1" class="form-label custlabel">User Name</label>
+                                        <input type="text1" class="form-control custinput" id="userName1" name="mgrUName"aria-describedby="emailHelp">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3 loginfo ">
+                                    <div class="mb-3">
+                                        <label for="password1" class="form-label custlabel">Password</label>
+                                        <input type="mngrPassword" class="form-control " id="password1" name="mgrPass">
+                                      </div>
+                                </div>
+                                <div class="card-body">
+                                    <button type="button" class="btn btn-success" onclick="mngrLogin()">Manager Login</button>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+>>>>>>> c04ab44e2941d37aebbf6ba169c7cdddd0edc8c4
