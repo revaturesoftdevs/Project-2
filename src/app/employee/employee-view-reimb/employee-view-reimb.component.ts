@@ -9,7 +9,6 @@ import { EmployeeHttpService } from '../employee-http.service';
 })
 export class EmployeeViewReimbComponent implements OnInit {
 
-  
   pendReimb: Reimbursement[];  
   shouldDisplay:boolean= false;
   testEmp =5;
@@ -59,7 +58,5 @@ export class EmployeeViewReimbComponent implements OnInit {
   ngOnInit(): void {
     this.employeeService.getPendReimb().subscribe((response)=>{ this.pendReimb = response});
    }
- 
-
  
 }
