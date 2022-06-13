@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { EmployeeHttpService } from '../employee-http.service';
 import { Reimbursement } from '../employee-view-reimb/reimbursement.model';
 
 @Component({
@@ -24,7 +25,7 @@ export class EmployeeCreateReimbComponent implements OnInit {
   }
 
   createANewReimbursement() {
-    this.employeeService.createReimbursement(this.newReimbursement).subscribe((response) => {
+    this.employeeService.addReimb(this.newReimbursement).subscribe((response) => {
       //this response is not of much use
       console.log(response);
       // we need a fresh fetch of all books from the database
@@ -44,4 +45,5 @@ export class EmployeeCreateReimbComponent implements OnInit {
       // this.shouldDisplay = false;
     })
 
+  }
 }
