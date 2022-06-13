@@ -1,1 +1,33 @@
-<p>manager-view-employees works!</p>
+<div class="container">
+    <h3>All Employees</h3>
+    <table class="table table-striped">
+        <thead class="thead-dark myTable">
+            <tr>
+            <th scope="col">Employee Id</th>
+            <th scope="col">Manager Id</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">UserName</th>
+            <th scope="col">An Employee</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr *ngFor="let emp of currentAllEmployees">
+                   <td>{{ emp.empId }}</td>  
+                   <td>{{ emp.mgrId }}</td> 
+                   <td>{{ emp.empFirstName}}</td> 
+                   <td>{{ emp.empLastName }}</td> 
+                   <td>{{ emp.empUserName }}</td> 
+                   <td>
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            (click)="goToViewEmployee()">
+                                <i class="material-icons">View Employee</i>
+                        </button>
+                   </td>                
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>

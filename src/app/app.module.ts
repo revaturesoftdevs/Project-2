@@ -1,8 +1,5 @@
-import { ManagerServiceService } from './manager/manager-service.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmployeeProfileComponent } from './employee/employee-profile/employee-profile.component';
@@ -13,6 +10,9 @@ import { ManagerViewEmployeesComponent } from './manager/manager-view-employees/
 import { ManagerHeaderComponent } from './manager/manager-header/manager-header.component';
 import { LoginComponent } from './user-login/login/login.component';
 import { ManagerViewReimbComponent } from './manager/manager-view-reimb/manager-view-reimb.component';
+import { ViewPendingReimbComponent } from './manager/view-pending-reimb/view-pending-reimb.component';
+import { FormsModule } from '@angular/forms';
+import {  HttpClientModule } from '@angular/common/http';
 import { LogoutComponent } from './user-login/logout/logout.component';
 
 
@@ -24,15 +24,17 @@ import { LogoutComponent } from './user-login/logout/logout.component';
     EmployeeViewReimbComponent,
     EmployeeCreateReimbComponent,
     ManagerViewEmployeesComponent,
+    ManagerViewReimbComponent,
     ManagerHeaderComponent,
     LoginComponent,
+    ViewPendingReimbComponent,
     LogoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
