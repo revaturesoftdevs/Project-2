@@ -50,8 +50,7 @@ mgrDetails: MgrDetails = {
         this.authService.isEmployee=true;
         this.router.navigate(['employee-profile'])
         this.authService.storeEmpDetails(response);           
-        this.router.navigate(['employee-header'])
-      }else{
+              }else{
         this.invalidMessage = "Invalid Username/Password";
       }
     });
