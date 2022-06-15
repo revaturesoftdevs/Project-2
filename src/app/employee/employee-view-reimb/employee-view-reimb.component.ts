@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Reimbursement } from './reimbursement.model';
 import { EmployeeHttpService } from '../employee-http.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'employee-view-reimb',
@@ -23,40 +24,68 @@ export class EmployeeViewReimbComponent implements OnInit {
     };
   
   constructor(private employeeService:EmployeeHttpService) {
-    this.pendReimb = [];
-   }
 
-  getPendReimb(){
+  pendReimb: Reimbursement[];
+  resolvedReimb: Reimbursement[];
+  shouldDisplay: boolean = false;
+  testEmp = 5;
+  newReimb: Reimbursement = {
+  reimbursementId: 0,
+  empId: 0,
+  mgrId: 0,
+  reimbursementDesc: '',
+  reimbursementStatus: '',
+  reimbursementAmt: 0
+
+  };
+
+  constructor(private employeeService: EmployeeHttpService, private router: Router) {
+  
+    this.pendReimb = [];
+    this.resolvedReimb = [];
+  }
+  ngOnInit(): void {
+    this.employeeService.getPendReimb().subscribe((response) => { this.pendReimb = response });
+    this.employeeService.getResolvedReimb().subscribe((response) => { this.resolvedReimb = response });
+  }
+
+  getPendReimb() {
     this.employeeService.getPendReimb();
   }
-  displayForm(){
-    if(this.shouldDisplay){
+
+  getResolvedReimbursement() {
+    this.employeeService.getResolvedReimb().subscribe((response) => { this.resolvedReimb = response });
+  }
+
+  displayForm() {
+    if (this.shouldDisplay) {
       this.shouldDisplay = false;
-    }else{
+    } else {
       this.shouldDisplay = true;
     }
   }
 
-  addReimb(){
-    this.employeeService.addReimb(this.newReimb).subscribe((response)=>{
+  addReimb() {
+    this.employeeService.addReimb(this.newReimb).subscribe((response) => {
       console.log(response);
-      
-      this.newReimb ={
+      this.ngOnInit();
+      this.newReimb = {
         reimbursementId: 0,
-        empId:0,
-        mgrId:0,
-        reimbursementDesc:'',
-        reimbursementStatus:'',
+        empId: 0,
+        mgrId: 0,
+        reimbursementDesc: '',
+        reimbursementStatus: '',
         reimbursementAmt: 0
-    
-      }
 
+      }
       this.shouldDisplay = false;
     })
 
   }
+
   ngOnInit(): void {
     this.employeeService.getPendReimb().subscribe((response)=>{ this.pendReimb = response});
    }
- 
+
 }
+

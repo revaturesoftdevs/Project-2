@@ -33,8 +33,12 @@ export class ManagerViewEmployeesComponent implements OnInit {
   ngOnInit(): void {
     this.loadData();
   }
+
   loadData(){
-    this.mgrService.currentAllEmployees(1).subscribe(response=>{
+    // from session storage, manager Id
+    let mgr = this.authService.getMgrDetails();
+    this.mgrService.currentAllEmployees(mgr.mgrId).subscribe(response=>{
+
       this.currentAllEmployees=response;
     })
   }
@@ -44,6 +48,7 @@ export class ManagerViewEmployeesComponent implements OnInit {
       this.employeenow=response;
     })
     //this.router.navigate(['app-employee-profile',empId]);
+
   }
 
 }

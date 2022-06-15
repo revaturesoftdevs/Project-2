@@ -10,30 +10,35 @@ export class AuthService {
   isManager:boolean=false;
   isEmployee:boolean=false;
   
-
-  
-
-  retrieveEmpDetails(){
-   let userData:any= JSON.parse(sessionStorage.getItem("emp")!);
-   if(userData!==null){
-    return JSON.parse(userData);
-   }   
-  }
-  public empDetails : EmpDetails | null = null;
-  public mgrDetails : MgrDetails | null = null;
-
   constructor() {
     this.getEmpDetails();
   }
 
-
   getEmpDetails() {
-    const empData = sessionStorage.getItem('emp');
-    if(empData){
-      this.empDetails = JSON.parse(empData);
-    }else{
-      this.empDetails = null;
+    let empData: any = sessionStorage.getItem('emp');
+    if(empData != null){
+      return JSON.parse(empData);
     }
+  }
+
+  getMgrDetails() {
+    let mgrData: any = sessionStorage.getItem('mgr');
+    if(mgrData != null){
+      return JSON.parse(mgrData);
+    }
+  }
+
+  storeEmpDetails(empDetails: EmpDetails) {
+    sessionStorage.setItem('emp', JSON.stringify(empDetails))
+  }
+
+  removeEmpDetails(): void{
+    sessionStorage.removeItem('emp');
+  }
+  
+  storeMgrDetails(mgrdetails: MgrDetails) {
+    sessionStorage.setItem('mgr', JSON.stringify(mgrdetails))
+
   }
 
   getMgrDetails() {

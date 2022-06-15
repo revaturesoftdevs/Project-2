@@ -1,3 +1,24 @@
+
+<form>
+  <div class="mb-3 mt-3">
+    <label for="empFirstName" class="form-label">First Name:</label>
+    <input type="empFirstName" class="form-control" id="empFirstName" placeholder="Employee First Name">
+  </div>
+  <div class="mb-3">
+    <label for="empLastName" class="form-label">Last Name:</label>
+    <input type="empLastName" class="form-control" id="empLastName" placeholder="Employee Last Name">
+  </div>
+  <div class="mb-3 mt-3">
+    <label for="empUserName" class="form-label">Username:</label>
+    <input type="empUserName" class="form-control" id="empUserName" placeholder="Employee Username">
+  </div>
+  <div class="mb-3">
+    <label for="empPassword" class="form-label">Password:</label>
+    <input type="empPassword" class="form-control" id="empPassword" placeholder="Employee Password">
+  </div>
+  <button type="button" class="btn btn-primary">Edit Profile</button>
+</form>
+
 <div class="container">
   <table class="table table-stripped">
     <thead class="thead-dark myTable">
@@ -11,18 +32,17 @@
         <th scope="col">Password</th>
         <th>Edit</th>
       </tr>
-
     </thead>
     <tbody>
-      <tr *ngFor ="let anEmp of newEmployees">
-        <td>{{anEmp.empId}}</td>
-        <td>{{anEmp.mgrId}}</td>
-        <td>{{anEmp.empFirstName}}</td>
-        <td>{{anEmp.empLastName}}</td>
-        <td>{{anEmp.empUserName}}</td>
-        <td>{{anEmp.empPassword}}</td>
-        
+      <tr>
+        <td>{{empModel.empId}}</td>
+        <td>{{empModel.mgrId}}</td>
+        <td>{{empModel.empFirstName}}</td>
+        <td>{{empModel.empLastName}}</td>
+        <td>{{empModel.empUserName}}</td>
+        <td>{{empModel.empPassword}}</td>
       </tr>
     </tbody>
   </table>
 </div>
+

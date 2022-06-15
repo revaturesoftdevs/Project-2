@@ -4,15 +4,19 @@ import { Manager } from './manager.model';
 import { Observable } from 'rxjs';
 import { Employee } from '../employee/employee.model';
 import { Reimbursement } from '../employee/employee-view-reimb/reimbursment-model';
+import { AuthService } from '../user-login/auth.service';
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class ManagerServiceService {
 
-
+  constructor() { }
 
   baseUrl: string = "http://localhost:7474";
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
+
 
   currentAllEmployees(mgrId:number): Observable<Employee[]> {
     return this.http.get<Employee[]>(this.baseUrl + "/AllEmployees/"+mgrId);
@@ -21,7 +25,7 @@ export class ManagerServiceService {
   //view individual employee
 
   goToViewEmployee(): Observable<Reimbursement> {
-
+    let mgrData = this.authService.getMgrDetails();
     return this.http.get<Reimbursement>(this.baseUrl + "/IndividualReimbursements/");
     // return this.http.get<Reimbursement[]>(this.baseUrl+"/IndividualReimbursements/"+mgrId+'/'+empId);
   }
