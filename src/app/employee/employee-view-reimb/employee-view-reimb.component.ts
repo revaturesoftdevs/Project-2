@@ -10,8 +10,6 @@ import { Router } from '@angular/router';
 })
 export class EmployeeViewReimbComponent implements OnInit {
 
-<<<<<<< Updated upstream
-  
   pendReimb: Reimbursement[];  
   shouldDisplay:boolean= false;
   testEmp =5;
@@ -26,7 +24,7 @@ export class EmployeeViewReimbComponent implements OnInit {
     };
   
   constructor(private employeeService:EmployeeHttpService) {
-=======
+
   pendReimb: Reimbursement[];
   resolvedReimb: Reimbursement[];
   shouldDisplay: boolean = false;
@@ -42,7 +40,7 @@ export class EmployeeViewReimbComponent implements OnInit {
   };
 
   constructor(private employeeService: EmployeeHttpService, private router: Router) {
->>>>>>> Stashed changes
+  
     this.pendReimb = [];
     this.resolvedReimb = [];
   }
@@ -84,15 +82,10 @@ export class EmployeeViewReimbComponent implements OnInit {
     })
 
   }
-<<<<<<< Updated upstream
+
   ngOnInit(): void {
     this.employeeService.getPendReimb().subscribe((response)=>{ this.pendReimb = response});
    }
- 
 
- 
-=======
-
->>>>>>> Stashed changes
 }
 

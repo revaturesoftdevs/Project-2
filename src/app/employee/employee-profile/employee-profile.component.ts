@@ -2,13 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmpDetails } from 'src/app/user-login/user.model';
 import { EmployeeHttpService } from '../employee-http.service';
-<<<<<<< Updated upstream
-=======
 import { UserService } from 'src/app/user-login/user.service';
 import { EmployeeServiceService } from '../employee-service.service';
 import { Employee } from '../employee.model';
 import { AuthService } from 'src/app/user-login/auth.service';
->>>>>>> Stashed changes
+
 
 @Component({
   selector: 'employee-profile',
@@ -17,11 +15,8 @@ import { AuthService } from 'src/app/user-login/auth.service';
 })
 export class EmployeeProfileComponent implements OnInit {
 
-<<<<<<< Updated upstream
-  updateEmployee: EmpDetails = {
-=======
+
   empModel: EmpDetails = {
->>>>>>> Stashed changes
     empId: 0,
     mgrId: 0,
     empFirstName: '',
@@ -32,12 +27,6 @@ export class EmployeeProfileComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private employeeHttpService: EmployeeHttpService,
-<<<<<<< Updated upstream
-              private router: Router) { }
-
-  ngOnInit(): void {}
-}
-=======
               private employeeService: EmployeeServiceService,
               private router: Router,
               private userService: UserService, private empService: EmployeeServiceService,
@@ -62,4 +51,4 @@ export class EmployeeProfileComponent implements OnInit {
     });
   }
 }
->>>>>>> Stashed changes
+

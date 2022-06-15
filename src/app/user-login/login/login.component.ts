@@ -30,24 +30,6 @@ export class LoginComponent implements OnInit {
     mgrPassword: '',
   };
 
-<<<<<<< Updated upstream
-  constructor(private userService: UserService, 
-              private authService: AuthService, 
-              private router: Router) { }
-
-  ngOnInit(): void {
-  }
-
-  empLoginValidation(){
-    this.userService.validateEmp(this.empDetails).subscribe((response)=>{
-      console.log(response);
-      if(response.empId != 0 ){
-        this.authService.storeEmpDetails(response);
-        this.authService.isLoggedIn = true;
-        this.router.navigate(['employee-profile'])
-      }else{
-        this.invalidMessage = "Invalid Username/Password";
-=======
   constructor(
     private userService: UserService,
     private authService: AuthService,
@@ -70,7 +52,6 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['employee-profile']);
       } else {
         this.invalidMessage = 'Invalid Username/Password';
->>>>>>> Stashed changes
       }
     });
   }
@@ -80,17 +61,12 @@ export class LoginComponent implements OnInit {
       if (response.mgrId != 0) {
         this.authService.storeMgrDetails(response);
         this.authService.isLoggedIn = true;
-<<<<<<< Updated upstream
-        this.router.navigate(['manager-landingpage'])
+        this.authService.isManager=true;
+        this.router.navigate(['manager-view-employees'])
       }else{
         this.invalidMessage2 = "Invalid Username/Password";
-=======
-        this.authService.isManager = true;
-        this.router.navigate(['manager-view-employees']);
-      } else {
-        this.invalidMessage2 = 'Invalid Username/Password';
->>>>>>> Stashed changes
       }
     });
   }
+
 }

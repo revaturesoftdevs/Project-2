@@ -7,19 +7,9 @@ import { Reimbursement } from './employee-view-reimb/reimbursement.model';
 @Injectable({
   providedIn: 'root'
 })
+
 export class EmployeeHttpService {
 
-<<<<<<< Updated upstream
-  baseUrl: string = "http://localhost:7474/user";
-
-  constructor(private http: HttpClient) { }
-
-  getEmployee(empId: any): Observable<EmpDetails>{
-    return this.http.get<EmpDetails>(this.baseUrl + '/' + empId);
-  }
-
-  updateEmployee(updatedEmployee: EmpDetails): Observable<EmpDetails>{
-=======
   baseUrl: string = "http://localhost:7474/";
 
   constructor(private http: HttpClient) { }
@@ -29,7 +19,6 @@ export class EmployeeHttpService {
   }
 
   updateEmployee(updatedEmployee: EmpDetails): Observable<EmpDetails> {
->>>>>>> Stashed changes
     return this.http.put<EmpDetails>(this.baseUrl, updatedEmployee);
   }
 
