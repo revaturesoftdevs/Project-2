@@ -7,8 +7,8 @@ import { EmpDetails, MgrDetails } from './user.model';
 export class AuthService {
 
   isLoggedIn: boolean = false;
-
-
+  isManager:boolean=false;
+  isEmployee:boolean=false;
   constructor() { }
 
   storeEmpDetails(empdetails: EmpDetails): void{
@@ -16,7 +16,11 @@ export class AuthService {
   }
 
   retrieveEmpDetails(){
-    return JSON.parse(sessionStorage.getItem("emp")!);   
+   let userData:any= JSON.parse(sessionStorage.getItem("emp")!);
+   if(userData!==null){
+    return JSON.parse(userData);
+   }   
+
   }
 
   removeEmpDetails(): void{
@@ -27,6 +31,12 @@ export class AuthService {
     sessionStorage.setItem("mgr", JSON.stringify(mgrdetails));
   }
 
+  retrieveMgrDetails(){
+    let mgrData:any=JSON.parse(sessionStorage.getItem("mgr")!);
+    if(mgrData!==null){
+      return JSON.parse(mgrData);
+    }
+  }
   removeMgrDetails(): void{
     sessionStorage.removeItem("mgr");
   }

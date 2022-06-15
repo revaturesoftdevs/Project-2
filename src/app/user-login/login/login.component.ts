@@ -43,9 +43,10 @@ mgrDetails: MgrDetails = {
       console.log(response);
       if(response.empId != 0 ){
         this.authService.storeEmpDetails(response); 
-        this.authService.retrieveEmpDetails();             // added to test sessionStorage
+        //this.authService.retrieveEmpDetails();             // added to test sessionStorage
         this.authService.isLoggedIn = true;
-        this.router.navigate(['employee-header'])
+        this.authService.isEmployee=true;
+        this.router.navigate(['employee-profile'])
       }else{
         this.invalidMessage = "Invalid Username/Password";
       }
@@ -58,7 +59,8 @@ mgrDetails: MgrDetails = {
       if(response.mgrId != 0 ){
         this.authService.storeMgrDetails(response);
         this.authService.isLoggedIn = true;
-        this.router.navigate(['manager-landingpage'])
+        this.authService.isManager=true;
+        this.router.navigate(['manager-view-employees'])
       }else{
         this.invalidMessage2 = "Invalid Username/Password";
       }

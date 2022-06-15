@@ -1,57 +1,28 @@
-<form>
-  <div class="mb-3 mt-3">
-    <label for="empId" class="form-label">Employee ID:</label>
-    <input 
-    type="number" 
-    class="form-control" 
-    name="empId" 
-    [(ngModel)]="empModel.empId"
-    disabled>
-  </div>
-  <div class="mb-3 mt-3">
-    <label for="mgrId" class="form-label">Manager ID:</label>
-    <input 
-    type="number" 
-    class="form-control" 
-    name="mgrId" 
-    [(ngModel)]="empModel.mgrId"
-    disabled>
-  </div>
-  <div class="mb-3 mt-3">
-    <label for="empFirstName" class="form-label">First Name:</label>
-    <input 
-    type="text" 
-    class="form-control" 
-    name="empFirstName" 
-    [(ngModel)]="empModel.empFirstName"
-    disabled>
-  </div>
-  <div class="mb-3">
-    <label for="empLastName" class="form-label">Last Name:</label>
-    <input 
-    type="text" 
-    class="form-control" 
-    name="empLastName" 
-    [(ngModel)]="empModel.empLastName"
-    disabled>
-  </div>
-  <div class="mb-3 mt-3">
-    <label for="empUserName" class="form-label">Username:</label>
-    <input 
-    type="text" 
-    class="form-control" 
-    name="empUserName" 
-    [(ngModel)]="empModel.empUserName"
-    disabled>
-  </div>
-  <div class="mb-3">
-    <label for="empPassword" class="form-label">Password:</label>
-    <input 
-    type="text" 
-    class="form-control" 
-    name="empPassword" 
-    [(ngModel)]="empModel.empPassword"
-    disabled>
-  </div>
-  <button type="button" class="btn btn-primary">Edit Profile</button>
-</form>
+<div class="container">
+  <table class="table table-stripped">
+    <thead class="thead-dark myTable">
+      <tr>
+      <tr>
+        <th scope="col">Employee Id</th>
+        <th scope="col">Manager Id</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">UserName</th>
+        <th scope="col">Password</th>
+        <th>Edit</th>
+      </tr>
+
+    </thead>
+    <tbody>
+      <tr *ngFor ="let anEmp of newEmployees">
+        <td>{{anEmp.empId}}</td>
+        <td>{{anEmp.mgrId}}</td>
+        <td>{{anEmp.empFirstName}}</td>
+        <td>{{anEmp.empLastName}}</td>
+        <td>{{anEmp.empUserName}}</td>
+        <td>{{anEmp.empPassword}}</td>
+        
+      </tr>
+    </tbody>
+  </table>
+</div>
