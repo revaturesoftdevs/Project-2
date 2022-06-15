@@ -7,18 +7,19 @@ import { Reimbursement } from './employee-view-reimb/reimbursement.model';
 @Injectable({
   providedIn: 'root'
 })
+
 export class EmployeeHttpService {
 
   baseUrl: string = "http://localhost:7474/user";
-
+  
   constructor(private http: HttpClient) { }
 
-  getEmployee(empId: any): Observable<EmpDetails>{
-    return this.http.get<EmpDetails>(this.baseUrl + '/' + empId);
+  employeeProfile(empId: any): Observable<EmpDetails>{
+    return this.http.get<EmpDetails>(this.baseUrl + 'profile/' + empId)
   }
 
   updateEmployee(updatedEmployee: EmpDetails): Observable<EmpDetails>{
-    return this.http.put<EmpDetails>(this.baseUrl, updatedEmployee);
+    return this.http.put<EmpDetails>(this.baseUrl + 'updateEmp',updatedEmployee);
   }
 
   addReimb(newReimbursement:Reimbursement):Observable<Reimbursement>{

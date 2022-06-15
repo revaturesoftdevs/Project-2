@@ -42,9 +42,10 @@ mgrDetails: MgrDetails = {
     this.userService.validateEmp(this.empDetails).subscribe((response)=>{
       console.log(response);
       if(response.empId != 0 ){
-        this.authService.storeEmpDetails(response);
+        this.authService.storeEmpDetails(response); 
+        this.authService.retrieveEmpDetails();             // added to test sessionStorage
         this.authService.isLoggedIn = true;
-        this.router.navigate(['employee-profile'])
+        this.router.navigate(['employee-header'])
       }else{
         this.invalidMessage = "Invalid Username/Password";
       }

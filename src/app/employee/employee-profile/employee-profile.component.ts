@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmpDetails } from 'src/app/user-login/user.model';
 import { EmployeeHttpService } from '../employee-http.service';
+import { UserService } from 'src/app/user-login/user.service';
 
 @Component({
   selector: 'employee-profile',
@@ -10,7 +11,7 @@ import { EmployeeHttpService } from '../employee-http.service';
 })
 export class EmployeeProfileComponent implements OnInit {
 
-  updateEmployee: EmpDetails = {
+  empModel: EmpDetails = {
     empId: 0,
     mgrId: 0,
     empFirstName: '',
@@ -21,7 +22,17 @@ export class EmployeeProfileComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private employeeHttpService: EmployeeHttpService,
-              private router: Router) { }
+              private router: Router,
+              private userService: UserService) { }
 
   ngOnInit(): void {}
+
+  // set response to update empModel, use it in HTML 
+  empData() {
+    this.employeeHttpService.employeeProfile(this.empModel).subscribe(response => {
+      console.log(this.empModel)
+    });
+  }
+
+
 }

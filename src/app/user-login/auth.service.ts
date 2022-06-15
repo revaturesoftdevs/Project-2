@@ -15,10 +15,14 @@ export class AuthService {
     sessionStorage.setItem("emp", JSON.stringify(empdetails));
   }
 
+  retrieveEmpDetails(){
+    return JSON.parse(sessionStorage.getItem("emp")!);   
+  }
+
   removeEmpDetails(): void{
     sessionStorage.removeItem("emp");
   }
-
+  
   storeMgrDetails(mgrdetails: MgrDetails): void{
     sessionStorage.setItem("mgr", JSON.stringify(mgrdetails));
   }

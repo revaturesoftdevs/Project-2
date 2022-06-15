@@ -7,15 +7,14 @@ import { EmployeeViewReimbComponent } from './employee/employee-view-reimb/emplo
 import { EmployeeCreateReimbComponent } from './employee/employee-create-reimb/employee-create-reimb.component';
 
 const routes: Routes = [
-{path:"manager-view",component: ManagerViewEmployeesComponent},
-{path:"employee-view-reimb",component: EmployeeViewReimbComponent },
-{path:"manager-view-employees", component:ManagerViewEmployeesComponent},
-{path:"view-pending-reimb", component:ViewPendingReimbComponent},
-{path:"manager-view-reimb",component:ManagerViewReimbComponent},
-{ path: "employee-create-reimb", component: EmployeeCreateReimbComponent }
+  { path: "manager-view", component: ManagerViewEmployeesComponent },
+  { path: "employee-view-reimb", component: EmployeeViewReimbComponent },
+  { path: "manager-view-employees", component: ManagerViewEmployeesComponent },
+  { path: "view-pending-reimb", component: ViewPendingReimbComponent },
+  { path: "manager-view-reimb", component: ManagerViewReimbComponent },
+  { path: "employee-create-reimb", component: EmployeeCreateReimbComponent }
+];
 
-              ];
- 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
