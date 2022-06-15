@@ -12,8 +12,6 @@ import { AuthService } from '../user-login/auth.service';
 })
 export class ManagerServiceService {
 
-  constructor() { }
-
   baseUrl: string = "http://localhost:7474";
   constructor(private http: HttpClient, private authService: AuthService) { }
 

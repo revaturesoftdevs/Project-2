@@ -41,31 +41,6 @@ export class AuthService {
 
   }
 
-  getMgrDetails() {
-    const mgrData = sessionStorage.getItem('mgr')
-    if(mgrData){
-      this.mgrDetails = JSON.parse(mgrData);
-    }else{
-      this.mgrDetails = null;
-    }
-    console.log(mgrData);
-  }
-
-  storeEmpDetails(empDetails: EmpDetails) {
-    sessionStorage.setItem('emp', JSON.stringify(empDetails))
-    console.log(sessionStorage);
-    this.getEmpDetails();
-  }
-
-  removeEmpDetails(): void{
-    sessionStorage.removeItem('emp');
-  }
-  
-  storeMgrDetails(mgrdetails: MgrDetails) {
-    sessionStorage.setItem('mgr', JSON.stringify(mgrdetails))
-    this.getMgrDetails();
-  }
-
   retrieveMgrDetails(){
     let mgrData:any=JSON.parse(sessionStorage.getItem("mgr")!);
     if(mgrData!==null){
@@ -76,6 +51,4 @@ export class AuthService {
     sessionStorage.removeItem('mgr');
   }
 
-  
-  
 }
