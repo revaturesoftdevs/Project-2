@@ -9,26 +9,56 @@ export class AuthService {
   isLoggedIn: boolean = false;
   isManager:boolean=false;
   isEmployee:boolean=false;
-  constructor() { }
+  
 
-  storeEmpDetails(empdetails: EmpDetails): void{
-    sessionStorage.setItem("emp", JSON.stringify(empdetails));
-  }
+  
 
   retrieveEmpDetails(){
    let userData:any= JSON.parse(sessionStorage.getItem("emp")!);
    if(userData!==null){
     return JSON.parse(userData);
    }   
+  }
+  public empDetails : EmpDetails | null = null;
+  public mgrDetails : MgrDetails | null = null;
 
+  constructor() {
+    this.getEmpDetails();
+  }
+
+
+  getEmpDetails() {
+    const empData = sessionStorage.getItem('emp');
+    if(empData){
+      this.empDetails = JSON.parse(empData);
+    }else{
+      this.empDetails = null;
+    }
+  }
+
+  getMgrDetails() {
+    const mgrData = sessionStorage.getItem('mgr')
+    if(mgrData){
+      this.mgrDetails = JSON.parse(mgrData);
+    }else{
+      this.mgrDetails = null;
+    }
+    console.log(mgrData);
+  }
+
+  storeEmpDetails(empDetails: EmpDetails) {
+    sessionStorage.setItem('emp', JSON.stringify(empDetails))
+    console.log(sessionStorage);
+    this.getEmpDetails();
   }
 
   removeEmpDetails(): void{
-    sessionStorage.removeItem("emp");
+    sessionStorage.removeItem('emp');
   }
   
-  storeMgrDetails(mgrdetails: MgrDetails): void{
-    sessionStorage.setItem("mgr", JSON.stringify(mgrdetails));
+  storeMgrDetails(mgrdetails: MgrDetails) {
+    sessionStorage.setItem('mgr', JSON.stringify(mgrdetails))
+    this.getMgrDetails();
   }
 
   retrieveMgrDetails(){
@@ -38,6 +68,9 @@ export class AuthService {
     }
   }
   removeMgrDetails(): void{
-    sessionStorage.removeItem("mgr");
+    sessionStorage.removeItem('mgr');
   }
+
+  
+  
 }

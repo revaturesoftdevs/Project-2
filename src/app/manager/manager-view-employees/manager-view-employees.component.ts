@@ -1,9 +1,12 @@
+import { AuthService } from './../../user-login/auth.service';
+import { MgrDetails } from './../../user-login/user.model';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 //import { EmployeeServiceService } from 'src/app/employee/employee-service.service';
 import { Reimbursement } from 'src/app/employee/employee-view-reimb/reimbursment-model';
 import { Employee } from 'src/app/employee/employee.model';
 import { ManagerServiceService } from '../manager-service.service';
+import { EmployeeHttpService } from 'src/app/employee/employee-http.service';
 
 @Component({
   selector: 'manager-view-employees',
@@ -13,7 +16,8 @@ import { ManagerServiceService } from '../manager-service.service';
 export class ManagerViewEmployeesComponent implements OnInit {
   currentAllEmployees: Employee[];
   employeenow: Reimbursement;
-  constructor(private router:Router, private mgrService: ManagerServiceService, ) { 
+  constructor(private router:Router, private mgrService: ManagerServiceService,
+    private authService:AuthService, private employeeService:EmployeeHttpService ) { 
     
     this.currentAllEmployees= [];
     this.employeenow={
@@ -30,7 +34,7 @@ export class ManagerViewEmployeesComponent implements OnInit {
     this.loadData();
   }
   loadData(){
-    this.mgrService.currentAllEmployees().subscribe(response=>{
+    this.mgrService.currentAllEmployees(1).subscribe(response=>{
       this.currentAllEmployees=response;
     })
   }

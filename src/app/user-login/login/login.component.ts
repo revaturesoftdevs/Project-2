@@ -33,9 +33,11 @@ mgrDetails: MgrDetails = {
 
   constructor(private userService: UserService, 
               private authService: AuthService, 
-              private router: Router) { }
+              private router: Router) { 
+              }
 
-  ngOnInit(): void {
+  ngOnInit(){
+    this.authService.getEmpDetails()
   }
 
   empLoginValidation(){
@@ -47,6 +49,8 @@ mgrDetails: MgrDetails = {
         this.authService.isLoggedIn = true;
         this.authService.isEmployee=true;
         this.router.navigate(['employee-profile'])
+        this.authService.storeEmpDetails(response);           
+        this.router.navigate(['employee-header'])
       }else{
         this.invalidMessage = "Invalid Username/Password";
       }
@@ -61,9 +65,11 @@ mgrDetails: MgrDetails = {
         this.authService.isLoggedIn = true;
         this.authService.isManager=true;
         this.router.navigate(['manager-view-employees'])
+        
       }else{
         this.invalidMessage2 = "Invalid Username/Password";
       }
     });
   }
+
 }

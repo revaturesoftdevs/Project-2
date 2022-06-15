@@ -14,19 +14,19 @@ export class ManagerServiceService {
   baseUrl: string = "http://localhost:7474";
   constructor(private http: HttpClient) { }
 
-  currentAllEmployees(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(this.baseUrl + "/AllEmployees/3");
+  currentAllEmployees(mgrId:number): Observable<Employee[]> {
+    return this.http.get<Employee[]>(this.baseUrl + "/AllEmployees/"+mgrId);
   }
 
   //view individual employee
 
   goToViewEmployee(): Observable<Reimbursement> {
 
-    return this.http.get<Reimbursement>(this.baseUrl + "/IndividualReimbursements/1/5");
+    return this.http.get<Reimbursement>(this.baseUrl + "/IndividualReimbursements/");
     // return this.http.get<Reimbursement[]>(this.baseUrl+"/IndividualReimbursements/"+mgrId+'/'+empId);
   }
   resolvedReim(): Observable<Reimbursement[]> {
-    return this.http.get<Reimbursement[]>(this.baseUrl + "/ResolvedReimbursements/1");
+    return this.http.get<Reimbursement[]>(this.baseUrl + "/ResolvedReimbursements/");
   }
   // resolvedReim(mgrId: number){
 
@@ -38,15 +38,15 @@ export class ManagerServiceService {
   //   return this.http.get<Reimbursement[]>(this.baseUrl+'/PendingReimbursements'+mgrId);
   // }
   pendingReim(): Observable<Reimbursement[]>{
-    return this.http.get<Reimbursement[]>(this.baseUrl+"/PendingReimbursements/2");
+    return this.http.get<Reimbursement[]>(this.baseUrl+"/PendingReimbursements/");
   }
 
 approvePending(): Observable<boolean>{
-  return this.http.put<boolean>(this.baseUrl+"/approveReimbursement/1/19","");
+  return this.http.put<boolean>(this.baseUrl+"/approveReimbursement/","");
 }
 
 deniedPending():Observable<boolean>{
-  return this.http.put<boolean>(this.baseUrl+"/denyReimbursement/2/22","");
+  return this.http.put<boolean>(this.baseUrl+"/denyReimbursement/","");
 }
 
 }
