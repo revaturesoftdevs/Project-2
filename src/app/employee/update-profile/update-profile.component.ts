@@ -11,16 +11,6 @@ import { EmployeeHttpService } from '../employee-http.service';
 })
 export class UpdateProfileComponent implements OnInit {
 
-
-  empModel: EmpDetails = {
-    empId: 0,
-    mgrId: 0,
-    empFirstName: '',
-    empLastName: '',
-    empUserName: '',
-    empPassword: ''
-  }
-
   currentEmp: EmpDetails = {
     empId: 0,
     mgrId: 0,
@@ -49,7 +39,8 @@ export class UpdateProfileComponent implements OnInit {
   }
   
   updatedEmployee(){
-    this.employeeHttpService.updateEmployee(this.empModel).subscribe((response)=>{
+    this.employeeHttpService.updateEmployee(this.currentEmp).subscribe((response)=>{
+      console.log(this.currentEmp);
       this.router.navigate(['employee-profile']);
     });
   }
