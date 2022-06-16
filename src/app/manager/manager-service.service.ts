@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Manager } from './manager.model';
 import { Observable } from 'rxjs';
 import { Employee } from '../employee/employee.model';
-import { Reimbursement } from '../employee/employee-view-reimb/reimbursment-model';
+import { Reimbursement } from '../employee/employee-view-reimb/reimbursement.model';
 import { AuthService } from '../user-login/auth.service';
 
 

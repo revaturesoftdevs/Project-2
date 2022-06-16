@@ -1,11 +1,13 @@
-<h3>User ID: {{empModel.empId}}</h3>
-<h3>Manager ID: {{empModel.mgrId}}</h3>
+<h4>User ID:   {{currentEmp.empId}}</h4>
+<h4>Manager ID:   {{currentEmp.mgrId}}</h4>
 <form>
     <div class="mb-3 mt-3">
       <label for="empFirstName" class="form-label">First Name:</label>
       <input 
       type="text" 
-      class="form-control" 
+      class="form-control"
+      placeholder="{{ currentEmp.empFirstName }}"
+      value="{{ currentEmp.empFirstName }}"
       name="empFirstName" 
       [(ngModel)]="empModel.empFirstName"
       #empFirstName='ngModel'>
@@ -15,6 +17,7 @@
       <input 
       type="text" 
       class="form-control" 
+      value="{{ currentEmp.empLastName }}"
       name="empLastName" 
       [(ngModel)]="empModel.empLastName"
       #empLastName="ngModel">
@@ -24,6 +27,7 @@
       <input 
       type="text" 
       class="form-control" 
+      value="{{ currentEmp.empUserName }}"
       name="empUserName" 
       [(ngModel)]="empModel.empUserName"
       #empUserName="ngModel">
@@ -33,9 +37,10 @@
       <input 
       type="text" 
       class="form-control" 
+      value="{{ currentEmp.empPassword }}"
       name="empPassword" 
       [(ngModel)]="empModel.empPassword"
       #empPassword="ngModel">
     </div>
-    <button type="button" class="btn btn-primary">Edit Profile</button>
+    <button type="button" class="btn btn-primary" (click)="updatedEmployee()">Edit Profile</button>
   </form>

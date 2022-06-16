@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Reimbursement } from 'src/app/employee/employee-view-reimb/reimbursment-model';
+import { Reimbursement } from 'src/app/employee/employee-view-reimb/reimbursement.model';
 import { ManagerServiceService } from '../manager-service.service';
 
 @Component({

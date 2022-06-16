@@ -29,25 +29,19 @@ export class EmployeeProfileComponent implements OnInit {
               private employeeHttpService: EmployeeHttpService,
               private employeeService: EmployeeServiceService,
               private router: Router,
-              private userService: UserService, private empService: EmployeeServiceService,
+              private userService: UserService, 
+              private empService: EmployeeServiceService,
               private authService: AuthService) {
                }
 
   ngOnInit(): void {
-    this.displayProfile(3);
+    this.displayProfile(1);
   }
 
   displayProfile(empId: any){
     let empData = this.authService.getEmpDetails();
     this.employeeHttpService.getEmployee(empData.empId).subscribe(response=>{
       this.empModel=response;
-    });
-  }
-
-  // set response to update empModel, use it in HTML 
-  empData() {
-    this.employeeHttpService.getEmployee(this.empModel).subscribe(response => {
-      console.log(this.empModel)
     });
   }
 }

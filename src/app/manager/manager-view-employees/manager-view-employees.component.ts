@@ -3,7 +3,7 @@ import { MgrDetails } from './../../user-login/user.model';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 //import { EmployeeServiceService } from 'src/app/employee/employee-service.service';
-import { Reimbursement } from 'src/app/employee/employee-view-reimb/reimbursment-model';
+import { Reimbursement } from 'src/app/employee/employee-view-reimb/reimbursement.model';
 import { Employee } from 'src/app/employee/employee.model';
 import { ManagerServiceService } from '../manager-service.service';
 import { EmployeeHttpService } from 'src/app/employee/employee-http.service';

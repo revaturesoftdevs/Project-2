@@ -18,6 +18,9 @@
           <li class="nav-item" *ngIf="hasLoggedIn() && isEmployee()">
             <a class="nav-link" routerLink="employee-view-reimb">View Reimbursments</a>
           </li>
+          <li class="nav-item" *ngIf="hasLoggedIn() && isEmployee()">
+            <a class="nav-link" routerLink="employee-create-reimb">Create Reimbursement</a>
+          </li>
           <li class="=nav-item" *ngIf="hasLoggedIn() && isManager()">
             <a class="nav-link" routerLink="manager-view-employees">View All Employees</a>
           </li>

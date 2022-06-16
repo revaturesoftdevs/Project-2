@@ -8,6 +8,7 @@ import { EmployeeViewReimbComponent } from './employee/employee-view-reimb/emplo
 import { EmployeeCreateReimbComponent } from './employee/employee-create-reimb/employee-create-reimb.component';
 import { LoginComponent } from './user-login/login/login.component';
 import { EmployeeProfileComponent } from './employee/employee-profile/employee-profile.component';
+import { UpdateProfileComponent } from './employee/update-profile/update-profile.component';
 
 const routes: Routes = [
   { path: "manager-view", component: ManagerViewEmployeesComponent },
@@ -16,9 +17,10 @@ const routes: Routes = [
   { path: "view-pending-reimb", component: ViewPendingReimbComponent },
   { path: "manager-view-reimb", component: ManagerViewReimbComponent },
   { path: "login",component:LoginComponent},
-  { path: "update-profile", component: EmployeeProfileComponent},
+  { path: "update-profile", component: UpdateProfileComponent},
   { path: "employee-profile",component:EmployeeProfileComponent},
-  { path: "logout", component:LogoutComponent}
+  { path: "logout", component:LogoutComponent},
+  { path: "employee-create-reimb", component:EmployeeCreateReimbComponent}
 ];
 
 @NgModule({

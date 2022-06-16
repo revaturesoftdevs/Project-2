@@ -17,26 +17,26 @@ export class EmployeeHttpService {
 
   getEmployee(empId: any): Observable<EmpDetails> {
     let empData = this.authService.getEmpDetails();
-    return this.http.get<EmpDetails>(this.baseUrl + "profile/" + empData.empId);
+    return this.http.get<EmpDetails>(this.baseUrl + "emp-profile/" + empData.empId);
   }
 
   updateEmployee(updatedEmployee: EmpDetails): Observable<EmpDetails> {
     let empData = this.authService.getEmpDetails();
-    return this.http.put<EmpDetails>(this.baseUrl + "UpdateEmp" + empData.empId, updatedEmployee);
+    return this.http.put<EmpDetails>(this.baseUrl + "update-emp", updatedEmployee);
   }
 
   addReimb(newReimbursement: Reimbursement): Observable<Reimbursement> {
-    return this.http.post<Reimbursement>(this.baseUrl + "addReimbursement", newReimbursement);
+    return this.http.post<Reimbursement>(this.baseUrl + "add-reimbursement", newReimbursement);
   }
 
   getPendReimb(): Observable<Reimbursement[]> {
     let empData = this.authService.getEmpDetails();
-    return this.http.get<Reimbursement[]>(this.baseUrl + 'EmpPendingReimbursements/' + empData.empId);
+    return this.http.get<Reimbursement[]>(this.baseUrl + 'emp-pending-reimbursements/' + empData.empId);
   }
 
   getResolvedReimb(): Observable<Reimbursement[]> {
     let empData = this.authService.getEmpDetails();
-    return this.http.get<Reimbursement[]>(this.baseUrl + 'EmpResolvedReimbursements/' + empData.empId);
+    return this.http.get<Reimbursement[]>(this.baseUrl + 'emp-resolved-reimbursements/' + empData.empId);
   }
 }
 
