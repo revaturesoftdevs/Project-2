@@ -15,10 +15,10 @@ const routes: Routes = [
   { path: "manager-view-employees", component: ManagerViewEmployeesComponent },
   { path: "view-pending-reimb", component: ViewPendingReimbComponent },
   { path: "manager-view-reimb", component: ManagerViewReimbComponent },
-  {path:"login",component:LoginComponent},
-  {path:" app-update-profile", component: EmployeeProfileComponent},
-  {path:"employee-profile",component:EmployeeProfileComponent},
-  {path:"app-logout", component:LogoutComponent}
+  { path: "login",component:LoginComponent},
+  { path: "update-profile", component: EmployeeProfileComponent},
+  { path: "employee-profile",component:EmployeeProfileComponent},
+  { path: "logout", component:LogoutComponent}
 ];
 
 @NgModule({

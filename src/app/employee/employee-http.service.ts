@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthService } from '../user-login/auth.service';
 import { EmpDetails } from '../user-login/user.model';
 import { Reimbursement } from './employee-view-reimb/reimbursement.model';
 
@@ -12,14 +13,16 @@ export class EmployeeHttpService {
 
   baseUrl: string = "http://localhost:7474/";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   getEmployee(empId: any): Observable<EmpDetails> {
-    return this.http.get<EmpDetails>(this.baseUrl + "profile/" + empId);
+    let empData = this.authService.getEmpDetails();
+    return this.http.get<EmpDetails>(this.baseUrl + "profile/" + empData.empId);
   }
 
   updateEmployee(updatedEmployee: EmpDetails): Observable<EmpDetails> {
-    return this.http.put<EmpDetails>(this.baseUrl, updatedEmployee);
+    let empData = this.authService.getEmpDetails();
+    return this.http.put<EmpDetails>(this.baseUrl + "UpdateEmp" + empData.empId, updatedEmployee);
   }
 
   addReimb(newReimbursement: Reimbursement): Observable<Reimbursement> {
@@ -27,11 +30,13 @@ export class EmployeeHttpService {
   }
 
   getPendReimb(): Observable<Reimbursement[]> {
-    return this.http.get<Reimbursement[]>(this.baseUrl + 'PendingReimbursements/1');
+    let empData = this.authService.getEmpDetails();
+    return this.http.get<Reimbursement[]>(this.baseUrl + 'EmpPendingReimbursements/' + empData.empId);
   }
 
   getResolvedReimb(): Observable<Reimbursement[]> {
-    return this.http.get<Reimbursement[]>(this.baseUrl + 'EmpResolvedReimbursements/1');
+    let empData = this.authService.getEmpDetails();
+    return this.http.get<Reimbursement[]>(this.baseUrl + 'EmpResolvedReimbursements/' + empData.empId);
   }
 }
 

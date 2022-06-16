@@ -12,8 +12,9 @@ export class EmployeeViewReimbComponent implements OnInit {
 
   pendReimb: Reimbursement[];  
   resolvedReimb: Reimbursement[];
+
   shouldDisplay:boolean= false;
-  testEmp =5;
+
   newReimb:Reimbursement ={
     reimbursementId: 0,
     empId:0,
@@ -24,21 +25,14 @@ export class EmployeeViewReimbComponent implements OnInit {
 
     };
   
-  constructor(private employeeService: EmployeeHttpService, private router: Router) {
+  constructor(private employeeService: EmployeeHttpService, 
+              private router: Router) {
     this.resolvedReimb = [];
     this.pendReimb = [];
   }
 
   ngOnInit(): void {
     this.employeeService.getPendReimb().subscribe((response) => { this.pendReimb = response });
-    this.employeeService.getResolvedReimb().subscribe((response) => { this.resolvedReimb = response });
-  }
-
-  getPendReimb() {
-    this.employeeService.getPendReimb();
-  }
-
-  getResolvedReimbursement() {
     this.employeeService.getResolvedReimb().subscribe((response) => { this.resolvedReimb = response });
   }
 

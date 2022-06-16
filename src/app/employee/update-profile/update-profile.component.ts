@@ -4,7 +4,7 @@ import { EmpDetails } from 'src/app/user-login/user.model';
 import { EmployeeHttpService } from '../employee-http.service';
 
 @Component({
-  selector: 'app-update-profile',
+  selector: 'update-profile',
   templateUrl: './update-profile.component.html',
   styleUrls: ['./update-profile.component.css']
 })
