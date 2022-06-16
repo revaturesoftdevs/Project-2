@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: "view-pending-reimb", component: ViewPendingReimbComponent },
   { path: "manager-view-reimb", component: ManagerViewReimbComponent },
   {path:"login",component:LoginComponent},
-  {path:" app-update-profile", component: EmployeeProfileComponent},
+  {path:"app-update-profile", component: EmployeeProfileComponent},
   {path:"employee-profile",component:EmployeeProfileComponent},
   {path:"app-logout", component:LogoutComponent}
 ];
