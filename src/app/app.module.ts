@@ -10,7 +10,7 @@ import { LoginComponent } from './user-login/login/login.component';
 import { ManagerViewReimbComponent } from './manager/manager-view-reimb/manager-view-reimb.component';
 import { ViewPendingReimbComponent } from './manager/view-pending-reimb/view-pending-reimb.component';
 import { FormsModule } from '@angular/forms';
-import {  HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { LogoutComponent } from './user-login/logout/logout.component';
 import { UpdateProfileComponent } from './employee/update-profile/update-profile.component';
 import { HeaderComponent } from './header/header.component';

@@ -3,7 +3,7 @@ import { MgrDetails } from './../../user-login/user.model';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 //import { EmployeeServiceService } from 'src/app/employee/employee-service.service';
-import { Reimbursement } from 'src/app/employee/employee-view-reimb/reimbursment-model';
+import { Reimbursement } from 'src/app/employee/employee-view-reimb/reimbursement.model';
 import { Employee } from 'src/app/employee/employee.model';
 import { ManagerServiceService } from '../manager-service.service';
 import { EmployeeHttpService } from 'src/app/employee/employee-http.service';
@@ -33,8 +33,12 @@ export class ManagerViewEmployeesComponent implements OnInit {
   ngOnInit(): void {
     this.loadData();
   }
+
   loadData(){
-    this.mgrService.currentAllEmployees(1).subscribe(response=>{
+    // from session storage, manager Id
+    let mgr = this.authService.getMgrDetails();
+    this.mgrService.currentAllEmployees(mgr.mgrId).subscribe(response=>{
+
       this.currentAllEmployees=response;
     })
   }
@@ -44,6 +48,7 @@ export class ManagerViewEmployeesComponent implements OnInit {
       this.employeenow=response;
     })
     //this.router.navigate(['app-employee-profile',empId]);
+
   }
 
 }

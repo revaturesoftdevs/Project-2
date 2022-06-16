@@ -11,18 +11,18 @@
         <th scope="col">Password</th>
         <th>Edit</th>
       </tr>
-
     </thead>
     <tbody>
-      <tr *ngFor ="let anEmp of newEmployees">
-        <td>{{anEmp.empId}}</td>
-        <td>{{anEmp.mgrId}}</td>
-        <td>{{anEmp.empFirstName}}</td>
-        <td>{{anEmp.empLastName}}</td>
-        <td>{{anEmp.empUserName}}</td>
-        <td>{{anEmp.empPassword}}</td>
-        
+      <tr>
+        <td>{{empModel.empId}}</td>
+        <td>{{empModel.mgrId}}</td>
+        <td>{{empModel.empFirstName}}</td>
+        <td>{{empModel.empLastName}}</td>
+        <td>{{empModel.empUserName}}</td>
+        <td>{{empModel.empPassword}}</td>
+        <td><button type="button" class="btn btn-primary">Edit Profile</button></td>
       </tr>
     </tbody>
   </table>
 </div>
+
