@@ -11,7 +11,7 @@ import { Reimbursement } from './employee-view-reimb/reimbursement.model';
 
 export class EmployeeHttpService {
 
-  baseUrl: string = "http://localhost:7474/";
+  baseUrl: string = "http://localhost:7272/api/";
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
@@ -21,7 +21,6 @@ export class EmployeeHttpService {
   }
 
   updateEmployee(updatedEmployee: EmpDetails): Observable<EmpDetails> {
-    let empData = this.authService.getEmpDetails();
     return this.http.put<EmpDetails>(this.baseUrl + "update-emp", updatedEmployee);
   }
 

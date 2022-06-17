@@ -38,7 +38,6 @@ export class AuthService {
   
   storeMgrDetails(mgrdetails: MgrDetails) {
     sessionStorage.setItem('mgr', JSON.stringify(mgrdetails))
-
   }
 
   retrieveMgrDetails(){
@@ -47,6 +46,7 @@ export class AuthService {
       return JSON.parse(mgrData);
     }
   }
+  
   removeMgrDetails(): void{
     sessionStorage.removeItem('mgr');
   }
