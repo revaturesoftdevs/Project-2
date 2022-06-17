@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Reimbursement } from './reimbursement.model';
 import { EmployeeHttpService } from '../employee-http.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/user-login/auth.service';
+import { EmpDetails } from 'src/app/user-login/user.model';
 
 @Component({
   selector: 'employee-view-reimb',
@@ -22,11 +24,11 @@ export class EmployeeViewReimbComponent implements OnInit {
     reimbursementDesc:'',
     reimbursementStatus:'',
     reimbursementAmt: 0
-
-    };
+  };
   
   constructor(private employeeService: EmployeeHttpService, 
-              private router: Router) {
+              private router: Router,
+              private authService: AuthService,) {
     this.resolvedReimb = [];
     this.pendReimb = [];
   }
@@ -45,21 +47,30 @@ export class EmployeeViewReimbComponent implements OnInit {
   }
 
   addReimb() {
-    this.employeeService.addReimb(this.newReimb).subscribe((response) => {
-      console.log(response);
+    let empSession = this.authService.getEmpDetails();
+
+    let newEmpReimb: Reimbursement = {
+      reimbursementId: 0,
+      empId: empSession.empId,
+      mgrId: empSession.mgrId,
+      reimbursementDesc: this.newReimb.reimbursementDesc,
+      reimbursementStatus: 'pending',
+      reimbursementAmt: this.newReimb.reimbursementAmt
+    }
+
+    this.newReimb = {
+      reimbursementId: 0,
+      empId: 0,
+      mgrId: 0,
+      reimbursementDesc: '',
+      reimbursementStatus: '',
+      reimbursementAmt: 0
+    }
+
+    this.employeeService.addReimb(newEmpReimb).subscribe((response) => {
       this.ngOnInit();
-      this.newReimb = {
-        reimbursementId: 0,
-        empId: 0,
-        mgrId: 0,
-        reimbursementDesc: '',
-        reimbursementStatus: '',
-        reimbursementAmt: 0
-
-      }
       this.shouldDisplay = false;
-    })
-
+    });
   }
 }
 

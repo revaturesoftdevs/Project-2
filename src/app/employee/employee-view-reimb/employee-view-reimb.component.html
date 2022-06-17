@@ -70,36 +70,6 @@
                       REIMBURSEMENT FORM
                     </div>
                     <div class="card-body">
-                      <div class="mb-3 mt-3">
-                        <label for="EId" class="form-label">Employee ID:</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="eId"
-                          placeholder="Enter Employee Id"
-                          name="employee-Id"
-                          [(ngModel)]="newReimb.empId"
-                          #eId="ngModel"
-                          required
-                        />
-                        <div
-                          *ngIf="!eId.valid && eId.touched"
-                          class="text-danger small"
-                        >
-                          Employee Id Required!
-                        </div>
-                      </div>
-                      <div class="mb-3">
-                        <label for="mId" class="form-label">Manager ID:</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="mId"
-                          placeholder="Enter Manager Id"
-                          name="managerId"
-                          [(ngModel)]="newReimb.mgrId"
-                        />
-                      </div>
                       <div class="mb-3">
                         <label for="rDesc" class="form-label"
                           >Reimbursement Description:</label
@@ -107,10 +77,10 @@
                         <input
                           type="text"
                           class="form-control"
-                          id="rDesc"
                           placeholder="Enter Reimbursement Description"
                           name="reimbursementDesc"
                           [(ngModel)]="newReimb.reimbursementDesc"
+                          #reimbursementDesc="ngModel"
                         />
                       </div>
                       <div class="mb-3">
@@ -120,10 +90,10 @@
                         <input
                           type="text"
                           class="form-control"
-                          id="rAmt"
                           placeholder="Enter Reimbursement Amount"
                           name="reimbursementAmt"
                           [(ngModel)]="newReimb.reimbursementAmt"
+                          #reimbursementAmt="ngModel"
                         />
                       </div>
                       <div class="mb-3">
@@ -134,9 +104,9 @@
                           type="text"
                           class="form-control"
                           id="rStatus"
-                          placeholder="Enter Reimbursement Status"
-                          name="rStatus"
-                          [(ngModel)]="newReimb.reimbursementStatus"
+                          value="pending"
+                          name="pending"
+                          disabled="true"
                         />
                       </div>
                     </div>
