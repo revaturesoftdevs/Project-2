@@ -22,12 +22,38 @@
                         <button
                             type="button"
                             class="btn btn-primary"
-                            (click)="goToViewEmployee()">
+                            (click)="goToViewEmployee(emp.mgrId,emp.empId)">
                                 <i class="material-icons">View Employee</i>
                         </button>
                    </td>                
                 </tr>
             </tbody>
-        </table>
-        
+        </table>        
+    </div>
+    
+        <div *ngIf="shouldDisplay">
+            <div class="container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Reimbursement Id</th>
+                    <th>Employee Id</th>
+                    <th>Manager Id</th>
+                    <th> Reimbursement Description</th>
+                    <th>Reimbursement Amount</th>
+                    <th>Reimbursement Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let req of allRequests" >
+                    <td>{{req.reimbursementId}}</td>
+                    <td>{{req.empId}}</td>
+                    <td>{{req.mgrId}}</td>
+                    <td>{{req.reimbursementDesc}}</td>
+                    <td>{{req.reimbursementAmt}}</td>
+                    <td>{{req.reimbursementStatus}}</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
     </div>

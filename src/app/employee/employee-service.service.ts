@@ -13,9 +13,12 @@ export class EmployeeServiceService {
 
   constructor(private http: HttpClient) { }
 
-  // employeeProfile(): Observable<EmpDetails[]>{
-  //   return this.http.get<EmpDetails[]>(this.baseUrl+"/profile/3");
-  // }
+  employeeProfile(): Observable<EmpDetails[]>{
+    return this.http.get<EmpDetails[]>(this.baseUrl+"/profile/");
+   // return this.http.get<EmpDetails[]>(this.baseUrl+"/profile"+'/'+empId);
+  }
+
+ 
 
   getAllPendingReimbursements(): Observable<Reimbursement[]> {
 

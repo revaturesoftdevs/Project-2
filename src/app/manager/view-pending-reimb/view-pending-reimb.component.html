@@ -18,9 +18,9 @@
             <td>{{req.reimbursementAmt}}</td>
             <td>{{req.reimbursementStatus}}</td>
             <td><button type="submit" class="btn btn-primary"
-                    (click)="approved()">Approve</button></td>
+                    (click)="approved(req.empId,req.reimbursementId)">Approve</button></td>
             <td><button type="submit" class="btn btn-danger"
-                    (click)="denied()">Deny</button></td>
+                    (click)="denied(req.empId,req.reimbursementId)">Deny</button></td>
         </tr>
         <!--approved(req.empId,req.reimbursementId)-->
         <!--denied(req.empId,req.reimbursementId)-->

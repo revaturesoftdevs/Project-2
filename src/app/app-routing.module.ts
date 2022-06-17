@@ -12,6 +12,7 @@ import { UpdateProfileComponent } from './employee/update-profile/update-profile
 import { AuthenticationGuard } from './user-login/authentication.guard';
 
 const routes: Routes = [
+
   { path: "manager-view", component: ManagerViewEmployeesComponent, canActivate:[AuthenticationGuard]},
   { path: "employee-view-reimb", component: EmployeeViewReimbComponent, canActivate:[AuthenticationGuard] },
   { path: "manager-view-employees", component: ManagerViewEmployeesComponent, canActivate:[AuthenticationGuard] },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: "employee-profile",component:EmployeeProfileComponent, canActivate:[AuthenticationGuard]},
   { path: "logout", component:LogoutComponent},
   { path: "employee-create-reimb", component:EmployeeCreateReimbComponent, canActivate:[AuthenticationGuard]}
+
 ];
 
 @NgModule({
