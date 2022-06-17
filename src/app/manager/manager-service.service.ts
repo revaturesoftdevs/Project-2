@@ -12,23 +12,25 @@ import { AuthService } from '../user-login/auth.service';
 })
 export class ManagerServiceService {
 
-  baseUrl: string = "http://localhost:7474";
+  baseUrl: string = "http://localhost:7272/api";
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-
   currentAllEmployees(mgrId:number): Observable<Employee[]> {
-    return this.http.get<Employee[]>(this.baseUrl + "/AllEmployees/"+mgrId);
+    return this.http.get<Employee[]>(this.baseUrl + "/all-employees/"+mgrId);
   }
 
   //view individual employee
 
-  goToViewEmployee(): Observable<Reimbursement> {
+  goToViewEmployee(mgrId:number,empId:number): Observable<Reimbursement[]> {
     let mgrData = this.authService.getMgrDetails();
-    return this.http.get<Reimbursement>(this.baseUrl + "/IndividualReimbursements/");
+    return this.http.get<Reimbursement[]>(this.baseUrl + "/IndividualReimbursements/"+mgrId+'/'+empId);
     // return this.http.get<Reimbursement[]>(this.baseUrl+"/IndividualReimbursements/"+mgrId+'/'+empId);
   }
   resolvedReim(): Observable<Reimbursement[]> {
-    return this.http.get<Reimbursement[]>(this.baseUrl + "/ResolvedReimbursements/");
+    let mgrData = this.authService.getMgrDetails();
+    console.log(mgrData.mgrId);
+  
+    return this.http.get<Reimbursement[]>(this.baseUrl + "/resolved-reimbursements/"+mgrData.mgrId);
   }
   // resolvedReim(mgrId: number){
 
@@ -39,16 +41,16 @@ export class ManagerServiceService {
 
   //   return this.http.get<Reimbursement[]>(this.baseUrl+'/PendingReimbursements'+mgrId);
   // }
-  pendingReim(): Observable<Reimbursement[]>{
-    return this.http.get<Reimbursement[]>(this.baseUrl+"/PendingReimbursements/");
+  pendingReim(mgrId:number): Observable<Reimbursement[]>{
+    return this.http.get<Reimbursement[]>(this.baseUrl+"/pending-reimbursements/"+mgrId);
   }
 
-approvePending(): Observable<boolean>{
-  return this.http.put<boolean>(this.baseUrl+"/approveReimbursement/","");
+approvePending(empId:number, reimbursmentId: number): Observable<boolean>{
+  return this.http.put<boolean>(this.baseUrl+"/approve-reimbursement/"+empId+'/'+reimbursmentId,"");
 }
 
-deniedPending():Observable<boolean>{
-  return this.http.put<boolean>(this.baseUrl+"/denyReimbursement/","");
+deniedPending(empId:number, reimbursmentId: number):Observable<boolean>{
+  return this.http.put<boolean>(this.baseUrl+"/deny-reimbursement/"+empId+'/'+reimbursmentId,"");
 }
 
 }

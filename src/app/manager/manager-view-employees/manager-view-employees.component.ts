@@ -15,19 +15,15 @@ import { EmployeeHttpService } from 'src/app/employee/employee-http.service';
 })
 export class ManagerViewEmployeesComponent implements OnInit {
   currentAllEmployees: Employee[];
-  employeenow: Reimbursement;
+  allRequests: Reimbursement[];
+  shouldDisplay: boolean = false;
+
   constructor(private router:Router, private mgrService: ManagerServiceService,
     private authService:AuthService, private employeeService:EmployeeHttpService ) { 
     
     this.currentAllEmployees= [];
-    this.employeenow={
-      reimbursementId: 0,
-      empId:0,
-      mgrId:0,
-      reimbursementDesc:"",
-      reimbursementStatus:"",
-      reimbursementAmt: 0
-    }
+    this.allRequests=[];
+    
   }
 
   ngOnInit(): void {
@@ -38,14 +34,14 @@ export class ManagerViewEmployeesComponent implements OnInit {
     // from session storage, manager Id
     let mgr = this.authService.getMgrDetails();
     this.mgrService.currentAllEmployees(mgr.mgrId).subscribe(response=>{
-
       this.currentAllEmployees=response;
     })
   }
   
-  goToViewEmployee(){    
-     this.mgrService.goToViewEmployee().subscribe(response=>{
-      this.employeenow=response;
+  goToViewEmployee(mgrId: number,empId:number){  
+    this.shouldDisplay=true;  
+     this.mgrService.goToViewEmployee(mgrId,empId).subscribe(response=>{
+      this.allRequests=response;
     })
     //this.router.navigate(['app-employee-profile',empId]);
 
