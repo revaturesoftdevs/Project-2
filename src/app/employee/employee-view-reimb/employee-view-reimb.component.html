@@ -64,7 +64,7 @@
             </button>
             <div *ngIf="shouldDisplay">
               <div class="container">
-                <form>
+                <form #myForm="ngForm">
                   <div class="card m-3">
                     <div class="card-header bg-primary text-light">
                       REIMBURSEMENT FORM
@@ -79,9 +79,19 @@
                           class="form-control"
                           placeholder="Enter Reimbursement Description"
                           name="reimbursementDesc"
-                          [(ngModel)]="newReimb.reimbursementDesc"
+                          [(ngModel)] ="newReimb.reimbursementDesc"
                           #reimbursementDesc="ngModel"
+                          required
                         />
+                        <div
+                          *ngIf="
+                            !reimbursementDesc.valid &&
+                            reimbursementDesc.touched
+                          "
+                          class="text-danger small"
+                        >
+                          reimbursement description is required!
+                        </div>
                       </div>
                       <div class="mb-3">
                         <label for="rAmt" class="form-label"
@@ -92,9 +102,16 @@
                           class="form-control"
                           placeholder="Enter Reimbursement Amount"
                           name="reimbursementAmt"
-                          [(ngModel)]="newReimb.reimbursementAmt"
+                          [(ngModel)] ="newReimb.reimbursementAmt"
                           #reimbursementAmt="ngModel"
+                          required
                         />
+                        <div
+                          *ngIf= "!reimbursementAmt.valid && reimbursementAmt.touched"
+                          class="text-danger small"
+                        >
+                          reimbursement amount is required!
+                        </div>
                       </div>
                       <div class="mb-3">
                         <label for="bImage" class="form-label"
@@ -115,6 +132,7 @@
                         type="button"
                         class="btn btn-success"
                         (click)="addReimb()"
+                        [disabled]="!myForm.valid"
                       >
                         Submit Reimbursement Request
                       </button>
