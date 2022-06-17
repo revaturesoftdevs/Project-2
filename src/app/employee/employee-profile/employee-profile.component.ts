@@ -37,6 +37,9 @@ export class EmployeeProfileComponent implements OnInit {
   ngOnInit(): void {
     this.displayProfile(1);
   }
+  update(){
+    this.router.navigate(['update-profile']);
+  }
 
   displayProfile(empId: any){
     let empData = this.authService.getEmpDetails();
