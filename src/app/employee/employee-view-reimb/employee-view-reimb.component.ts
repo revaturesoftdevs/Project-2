@@ -8,35 +8,51 @@ import { EmpDetails } from 'src/app/user-login/user.model';
 @Component({
   selector: 'employee-view-reimb',
   templateUrl: './employee-view-reimb.component.html',
-  styleUrls: ['./employee-view-reimb.component.css']
+  styleUrls: ['./employee-view-reimb.component.css'],
 })
 export class EmployeeViewReimbComponent implements OnInit {
-
   storeMessage: string = '';
-  pendReimb: Reimbursement[];  
+  pendReimb: Reimbursement[];
   resolvedReimb: Reimbursement[];
 
-  shouldDisplay:boolean= false;
+  shouldDisplay: boolean = false;
 
-  newReimb:Reimbursement ={
+  newReimb: Reimbursement = {
     reimbursementId: 0,
-    empId:0,
-    mgrId:0,
-    reimbursementDesc:'',
-    reimbursementStatus:'',
-    reimbursementAmt: 0
+    empId: 0,
+    mgrId: 0,
+    reimbursementDesc: '',
+    reimbursementStatus: '',
+    reimbursementAmt: 0,
   };
-  
-  constructor(private employeeService: EmployeeHttpService, 
-              private router: Router,
-              private authService: AuthService,) {
+
+  constructor(
+    private employeeService: EmployeeHttpService,
+    private router: Router,
+    private authService: AuthService
+  ) {
     this.resolvedReimb = [];
     this.pendReimb = [];
   }
 
   ngOnInit(): void {
-    this.employeeService.getPendReimb().subscribe((response) => { this.pendReimb = response });
-    this.employeeService.getResolvedReimb().subscribe((response) => { this.resolvedReimb = response });
+    this.employeeService.getPendReimb().subscribe({
+      next: (response) => {
+        this.pendReimb = response;
+      },
+      error: (error) => {
+        this.storeMessage = error.error.errorMessage;
+      },
+    });
+
+    this.employeeService.getResolvedReimb().subscribe({
+      next: (response) => {
+        this.resolvedReimb = response;
+      },
+      error: (error) => {
+        this.storeMessage = error.error.errorMessage;
+      },
+    });
   }
 
   displayForm() {
@@ -56,8 +72,8 @@ export class EmployeeViewReimbComponent implements OnInit {
       mgrId: empSession.mgrId,
       reimbursementDesc: this.newReimb.reimbursementDesc,
       reimbursementStatus: 'pending',
-      reimbursementAmt: this.newReimb.reimbursementAmt
-    }
+      reimbursementAmt: this.newReimb.reimbursementAmt,
+    };
 
     this.newReimb = {
       reimbursementId: 0,
@@ -65,20 +81,12 @@ export class EmployeeViewReimbComponent implements OnInit {
       mgrId: 0,
       reimbursementDesc: '',
       reimbursementStatus: '',
-      reimbursementAmt: 0
-    }
+      reimbursementAmt: 0,
+    };
 
-    this.employeeService.addReimb(newEmpReimb).subscribe(
-      
-      { 
-      next: (response) => {
-                        this.ngOnInit();
-                        this.shouldDisplay = false;
-                          },
-      error: (error) => {
-        this.storeMessage = error.error.errorMessage;
-      }
+    this.employeeService.addReimb(newEmpReimb).subscribe((response) => {
+      this.ngOnInit();
+      this.shouldDisplay = false;
     });
   }
 }
-

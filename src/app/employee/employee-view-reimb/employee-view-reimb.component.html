@@ -1,57 +1,61 @@
 <div class="container">
   <div class="row mt-5">
-    <h2>Pending Reimbursements</h2>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <td>REIMBURSEMENT ID</td>
-          <td>EMPLOYEE ID</td>
-          <td>MANAGER ID</td>
-          <td>REIMBURSEMENT DESCRIPTION</td>
-          <td>REIMBURSMENT AMOUNT</td>
-          <td>REIMBURSEMENT STATUS</td>
-          <td></td>
-          <td></td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let emplReimb of pendReimb">
-          <td>{{ emplReimb.reimbursementId }}</td>
-          <td>{{ emplReimb.empId }}</td>
-          <td>{{ emplReimb.mgrId }}</td>
-          <td>{{ emplReimb.reimbursementDesc }}</td>
-          <td>${{ emplReimb.reimbursementAmt }}</td>
-          <td>{{ emplReimb.reimbursementStatus }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div *ngIf="storeMessage == ''">
+      <h2>Pending Reimbursements</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <td>REIMBURSEMENT ID</td>
+            <td>EMPLOYEE ID</td>
+            <td>MANAGER ID</td>
+            <td>REIMBURSEMENT DESCRIPTION</td>
+            <td>REIMBURSMENT AMOUNT</td>
+            <td>REIMBURSEMENT STATUS</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let emplReimb of pendReimb">
+            <td>{{ emplReimb.reimbursementId }}</td>
+            <td>{{ emplReimb.empId }}</td>
+            <td>{{ emplReimb.mgrId }}</td>
+            <td>{{ emplReimb.reimbursementDesc }}</td>
+            <td>${{ emplReimb.reimbursementAmt }}</td>
+            <td>{{ emplReimb.reimbursementStatus }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <div class="container">
       <div class="row mt-5">
-        <h2>Resolved Reimbursements</h2>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <td>REIMBURSEMENT ID</td>
-              <td>EMPLOYEE ID</td>
-              <td>MANAGER ID</td>
-              <td>REIMBURSEMENT DESCRIPTION</td>
-              <td>REIMBURSMENT AMOUNT</td>
-              <td>REIMBURSEMENT STATUS</td>
-              <td></td>
-              <td></td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let emplReimb of resolvedReimb">
-              <td>{{ emplReimb.reimbursementId }}</td>
-              <td>{{ emplReimb.empId }}</td>
-              <td>{{ emplReimb.mgrId }}</td>
-              <td>{{ emplReimb.reimbursementDesc }}</td>
-              <td>${{ emplReimb.reimbursementAmt }}</td>
-              <td>{{ emplReimb.reimbursementStatus }}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div *ngIf="storeMessage == ''">
+          <h2>Resolved Reimbursements</h2>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <td>REIMBURSEMENT ID</td>
+                <td>EMPLOYEE ID</td>
+                <td>MANAGER ID</td>
+                <td>REIMBURSEMENT DESCRIPTION</td>
+                <td>REIMBURSMENT AMOUNT</td>
+                <td>REIMBURSEMENT STATUS</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let emplReimb of resolvedReimb">
+                <td>{{ emplReimb.reimbursementId }}</td>
+                <td>{{ emplReimb.empId }}</td>
+                <td>{{ emplReimb.mgrId }}</td>
+                <td>{{ emplReimb.reimbursementDesc }}</td>
+                <td>${{ emplReimb.reimbursementAmt }}</td>
+                <td>{{ emplReimb.reimbursementStatus }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <div class="row mt-5">
           <div class="col-2"></div>
           <div class="col-8">
