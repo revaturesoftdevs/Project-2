@@ -31,7 +31,7 @@
       [(ngModel)]="currentEmp.empFirstName"
       #empFirstName='ngModel'
       required>
-      <div *ngIf="!empFirstName.valid && empFirstName.touched" class="text-danger small">
+      <div *ngIf = "!empFirstName.valid && empFirstName.touched" class="text-danger small">
         first name is required!
     </div>
     </div>
@@ -45,7 +45,7 @@
       [(ngModel)]="currentEmp.empLastName"
       #empLastName="ngModel"
       required>
-      <div *ngIf="!empLastName.valid && empLastName.touched" class="text-danger small">
+      <div *ngIf = "!empLastName.valid && empLastName.touched" class="text-danger small">
         last name is required!
     </div>
     </div>
@@ -59,7 +59,7 @@
       [(ngModel)]="currentEmp.empUserName"
       #empUserName="ngModel"
       required>
-      <div *ngIf="!empUserName.valid && empUserName.touched" class="text-danger small">
+      <div *ngIf = "!empUserName.valid && empUserName.touched" class="text-danger small">
         user name is required!
     </div>
     </div>
@@ -73,7 +73,7 @@
       [(ngModel)]="currentEmp.empPassword"
       #empPassword="ngModel"
       required>
-      <div *ngIf="!empPassword.valid && empPassword.touched" class="text-danger small">
+      <div *ngIf = "!empPassword.valid && empPassword.touched" class="text-danger small">
         password is required!
     </div>
     </div>
