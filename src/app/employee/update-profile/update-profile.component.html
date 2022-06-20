@@ -1,9 +1,14 @@
+<div class="container myUpdateProfile">
+  <div class="card ">
 <form #myForm="ngForm">
+  <div class="card-body">
+    <div class="card-header bg-primary">Update Employee</div>
+    <div class="row justify-content-md-center ">
   <div class="mb-3 mt-3">
     <label for="empId" class="form-label">Employee ID:</label>
     <input 
     type="text" 
-    class="form-control"
+    class="form-control "
     value="{{ currentEmp.empId }}"
     name="empId" 
     [(ngModel)]="currentEmp.empId"
@@ -14,7 +19,7 @@
     <label for="mgrId" class="form-label">Manager ID:</label>
     <input 
     type="text" 
-    class="form-control"
+    class="form-control "
     value="{{ currentEmp.mgrId }}"
     name="mgrId"
     [(ngModel)]="currentEmp.mgrId"
@@ -25,7 +30,7 @@
       <label for="empFirstName" class="form-label">First Name:</label>
       <input 
       type="text" 
-      class="form-control"
+      class="form-control "
       value="{{ currentEmp.empFirstName }}"
       name="empFirstName" 
       [(ngModel)]="currentEmp.empFirstName"
@@ -39,7 +44,7 @@
       <label for="empLastName" class="form-label">Last Name:</label>
       <input 
       type="text" 
-      class="form-control" 
+      class="form-control " 
       value="{{ currentEmp.empLastName }}"
       name="empLastName" 
       [(ngModel)]="currentEmp.empLastName"
@@ -50,10 +55,10 @@
     </div>
     </div>
     <div class="mb-3 mt-3">
-      <label for="empUserName" class="form-label">Username:</label>
+      <label for="empUserName" class="form-label ">Username:</label>
       <input 
       type="text" 
-      class="form-control" 
+      class="form-control " 
       value="{{ currentEmp.empUserName }}"
       name="empUserName" 
       [(ngModel)]="currentEmp.empUserName"
@@ -67,7 +72,7 @@
       <label for="empPassword" class="form-label">Password:</label>
       <input 
       type="text" 
-      class="form-control" 
+      class="form-control " 
       value="{{ currentEmp.empPassword }}"
       name="empPassword" 
       [(ngModel)]="currentEmp.empPassword"
@@ -77,6 +82,12 @@
         password is required!
     </div>
     </div>
-    <button type="button" class="btn btn-primary" (click)="updatedEmployee()"
+  </div></div>
+  <div class="card-footer text-center">
+    <button type="button" class="btn btn-primary  btnUpdateSubmit" (click)="updatedEmployee()"
     [disabled]="!myForm.valid">Edit Profile</button>
+  </div>
   </form>
+  
+</div>
+</div>

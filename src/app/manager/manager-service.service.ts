@@ -19,11 +19,15 @@ export class ManagerServiceService {
 
   //view individual employee
 
-  goToViewEmployee(mgrId: number, empId: number): Observable<Reimbursement[]> {
+  
+  registerEmployee(newEmployee:Employee):Observable<Employee>{
+    return this.http.post<Employee>(this.baseUrl+"/register-employee", newEmployee);
+  }
+
+  goToViewEmployee(mgrId:number,empId:number): Observable<Reimbursement[]> {
     let mgrData = this.authService.getMgrDetails();
-    return this.http.get<Reimbursement[]>(
-      this.baseUrl + '/individual-employee-reimbursement/' + mgrId + '/' + empId
-    );
+    return this.http.get<Reimbursement[]>(this.baseUrl + "/individual-employee-reimbursement/"+mgrId+'/'+empId);
+    // return this.http.get<Reimbursement[]>(this.baseUrl+"/IndividualReimbursements/"+mgrId+'/'+empId);
   }
   resolvedReim(): Observable<Reimbursement[]> {
     let mgrData = this.authService.getMgrDetails();

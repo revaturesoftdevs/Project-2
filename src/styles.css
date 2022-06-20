@@ -63,7 +63,7 @@ body{
     font-size: 18px;
 }
 .custinput {
-    width: 150px;
+    width: 350px;
     padding-right: 50px;
 }
 .btnsub {
@@ -169,4 +169,17 @@ body{
     color: #0062cc;
     font-weight: 600;
     text-decoration: none;
+}
+
+
+.myUpdateProfile{
+    width: 50%;
+}
+.btnUpdateSubmit{
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border:rgba(0, 0, 0, 0.2);
+    margin: 5px;
+    
 }

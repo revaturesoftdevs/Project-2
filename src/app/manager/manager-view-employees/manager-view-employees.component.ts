@@ -18,15 +18,25 @@ export class ManagerViewEmployeesComponent implements OnInit {
   currentAllEmployees: Employee[];
   allRequests: Reimbursement[];
   shouldDisplay: boolean = false;
+  empRegister:boolean=false;
+ 
 
-  constructor(
-    private router: Router,
-    private mgrService: ManagerServiceService,
-    private authService: AuthService,
-    private employeeService: EmployeeHttpService
-  ) {
-    this.currentAllEmployees = [];
-    this.allRequests = [];
+  newEmployee: Employee={
+    empId: 0,
+    mgrId: 0,
+    empFirstName: "",
+    empLastName: "",
+    empUserName: "",
+    empPassword: ""
+
+  };
+
+  constructor(private router:Router, private mgrService: ManagerServiceService,
+    private authService:AuthService, private employeeService:EmployeeHttpService ) { 
+    
+    this.currentAllEmployees= [];
+    this.allRequests=[];
+    
   }
 
   ngOnInit(): void {
@@ -40,7 +50,31 @@ export class ManagerViewEmployeesComponent implements OnInit {
       this.currentAllEmployees = response;
     });
   }
+  
+  registerEmployee(){
+    if(this.empRegister){
+      this.empRegister = false;
+    }else{
+      this.empRegister = true;
+    }
+  }
 
+  addANewEmployee(){
+    this.mgrService.registerEmployee(this.newEmployee).subscribe((response)=>{
+      console.log(response);
+      this.loadData();
+      this.newEmployee={
+        empId: 0,
+        mgrId: 0,
+        empFirstName: "",
+        empLastName: "",
+        empUserName: "",
+        empPassword: ""
+    
+      };
+      this.empRegister=false;
+    })
+  }
   goToViewEmployee(mgrId: number, empId: number) {
     this.shouldDisplay = true;
     this.mgrService.goToViewEmployee(mgrId, empId).subscribe({
