@@ -10,7 +10,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let req of pendingReimbu" >
+        <tr *ngFor="let req of pendingReimb" >
             <td>{{req.reimbursementId}}</td>
             <td>{{req.empId}}</td>
             <td>{{req.mgrId}}</td>
@@ -22,5 +22,5 @@
             <td><button type="submit" class="btn btn-danger"
                     (click)="denied(req.empId,req.reimbursementId)">Deny</button></td>
         </tr>
-        <!--approved(req.empId,req.reimbursementId)-->
-        <!--denied(req.empId,req.reimbursementId)-->
+        </tbody>
+        </table>

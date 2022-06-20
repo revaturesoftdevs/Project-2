@@ -12,6 +12,7 @@ import { EmpDetails } from 'src/app/user-login/user.model';
 })
 export class EmployeeViewReimbComponent implements OnInit {
 
+  storeMessage: string = '';
   pendReimb: Reimbursement[];  
   resolvedReimb: Reimbursement[];
 
@@ -67,9 +68,16 @@ export class EmployeeViewReimbComponent implements OnInit {
       reimbursementAmt: 0
     }
 
-    this.employeeService.addReimb(newEmpReimb).subscribe((response) => {
-      this.ngOnInit();
-      this.shouldDisplay = false;
+    this.employeeService.addReimb(newEmpReimb).subscribe(
+      
+      { 
+      next: (response) => {
+                        this.ngOnInit();
+                        this.shouldDisplay = false;
+                          },
+      error: (error) => {
+        this.storeMessage = error.error.errorMessage;
+      }
     });
   }
 }

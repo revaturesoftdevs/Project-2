@@ -1,27 +1,27 @@
 <div class="container">
+  <div class="row mt-5">
     <h3>All Resolved Reimbursements:</h3>
-    <table class="table table-bordered ">
-         <thead class="thead-dark myTable">
-            <tr>
-                <th scope="col">Reimbursement Id</th>
-                <th scope="col">Employee Id</th>
-                <th scope="col">Manager Id</th>
-                <th scope="col">Reimbursement Description</th>
-                <th scope="col">Reimbursement Amount</th>
-                <th scope="col">Reimbursement Status</th>
-            
-            </tr>
-        </thead>
-        <tbody class="myTbody">
-            <tr *ngFor="let req of resolvedReim">
-                <td>{{req.reimbursementId}}</td>
-                <td>{{req.empId}}</td>
-                <td>{{req.mgrId}}</td>
-                <td>{{req.reimbursementDesc}}</td>
-                <td>{{req.reimbursementAmt}}</td>
-                <td>{{req.reimbursementStatus}}</td>                
-            </tr>
-        </tbody>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Reimbursement Id</th>
+          <th scope="col">Employee Id</th>
+          <th scope="col">Manager Id</th>
+          <th scope="col">Reimbursement Description</th>
+          <th scope="col">Reimbursement Amount</th>
+          <th scope="col">Reimbursement Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let req of resolvedReim">
+          <td>{{ req.reimbursementId }}</td>
+          <td>{{ req.empId }}</td>
+          <td>{{ req.mgrId }}</td>
+          <td>{{ req.reimbursementDesc }}</td>
+          <td>{{ req.reimbursementAmt }}</td>
+          <td>{{ req.reimbursementStatus }}</td>
+        </tr>
+      </tbody>
     </table>
+  </div>
 </div>
-

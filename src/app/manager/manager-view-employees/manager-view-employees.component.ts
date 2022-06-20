@@ -11,40 +11,45 @@ import { EmployeeHttpService } from 'src/app/employee/employee-http.service';
 @Component({
   selector: 'manager-view-employees',
   templateUrl: './manager-view-employees.component.html',
-  styleUrls: ['./manager-view-employees.component.css']
+  styleUrls: ['./manager-view-employees.component.css'],
 })
 export class ManagerViewEmployeesComponent implements OnInit {
+  storeMessage: string = '';
   currentAllEmployees: Employee[];
   allRequests: Reimbursement[];
   shouldDisplay: boolean = false;
 
-  constructor(private router:Router, private mgrService: ManagerServiceService,
-    private authService:AuthService, private employeeService:EmployeeHttpService ) { 
-    
-    this.currentAllEmployees= [];
-    this.allRequests=[];
-    
+  constructor(
+    private router: Router,
+    private mgrService: ManagerServiceService,
+    private authService: AuthService,
+    private employeeService: EmployeeHttpService
+  ) {
+    this.currentAllEmployees = [];
+    this.allRequests = [];
   }
 
   ngOnInit(): void {
     this.loadData();
   }
 
-  loadData(){
+  loadData() {
     // from session storage, manager Id
     let mgr = this.authService.getMgrDetails();
-    this.mgrService.currentAllEmployees(mgr.mgrId).subscribe(response=>{
-      this.currentAllEmployees=response;
-    })
-  }
-  
-  goToViewEmployee(mgrId: number,empId:number){  
-    this.shouldDisplay=true;  
-     this.mgrService.goToViewEmployee(mgrId,empId).subscribe(response=>{
-      this.allRequests=response;
-    })
-    //this.router.navigate(['app-employee-profile',empId]);
-
+    this.mgrService.currentAllEmployees(mgr.mgrId).subscribe((response) => {
+      this.currentAllEmployees = response;
+    });
   }
 
+  goToViewEmployee(mgrId: number, empId: number) {
+    this.shouldDisplay = true;
+    this.mgrService.goToViewEmployee(mgrId, empId).subscribe({
+      next: (response) => {
+        this.allRequests = response;
+      },
+      error: (error) => {
+        this.storeMessage = error.error.errorMessage;
+      },
+    });
+  }
 }

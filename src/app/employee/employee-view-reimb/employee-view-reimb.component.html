@@ -79,7 +79,7 @@
                           class="form-control"
                           placeholder="Enter Reimbursement Description"
                           name="reimbursementDesc"
-                          [(ngModel)] ="newReimb.reimbursementDesc"
+                          [(ngModel)]="newReimb.reimbursementDesc"
                           #reimbursementDesc="ngModel"
                           required
                         />
@@ -102,12 +102,14 @@
                           class="form-control"
                           placeholder="Enter Reimbursement Amount"
                           name="reimbursementAmt"
-                          [(ngModel)] ="newReimb.reimbursementAmt"
+                          [(ngModel)]="newReimb.reimbursementAmt"
                           #reimbursementAmt="ngModel"
                           required
                         />
                         <div
-                          *ngIf= "!reimbursementAmt.valid && reimbursementAmt.touched"
+                          *ngIf="
+                            !reimbursementAmt.valid && reimbursementAmt.touched
+                          "
                           class="text-danger small"
                         >
                           reimbursement amount is required!
@@ -139,6 +141,9 @@
                     </div>
                   </div>
                 </form>
+              </div>
+              <div *ngIf="storeMessage != ''">
+                <h3 class="text-danger">{{ storeMessage }}</h3>
               </div>
             </div>
           </div>
