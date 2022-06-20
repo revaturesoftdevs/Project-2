@@ -10,6 +10,7 @@ import { ManagerServiceService } from '../manager-service.service';
 })
 export class ManagerViewReimbComponent implements OnInit {
   
+  storeMessage: string = '';
   resolvedReim: Reimbursement[];
   constructor(private router:Router, private mgrService: ManagerServiceService) { 
     this.resolvedReim=[];
@@ -20,8 +21,14 @@ export class ManagerViewReimbComponent implements OnInit {
   }
 
   viewResolvedReim(){
-    this.mgrService.resolvedReim().subscribe(response=>{
-      this.resolvedReim=response;
+    this.mgrService.resolvedReim().subscribe(
+      {
+        next: response=>{
+        this.resolvedReim=response;
+        },
+      error: (error) => {
+        this.storeMessage = error.error.errorMessage;
+      }
     })
   }
 
