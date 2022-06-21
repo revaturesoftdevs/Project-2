@@ -12,6 +12,7 @@ import { EmpDetails } from 'src/app/user-login/user.model';
 })
 export class EmployeeViewReimbComponent implements OnInit {
   storeMessage: string = '';
+  storeMessage1: string = '';
   pendReimb: Reimbursement[];
   resolvedReimb: Reimbursement[];
 
@@ -50,7 +51,7 @@ export class EmployeeViewReimbComponent implements OnInit {
         this.resolvedReimb = response;
       },
       error: (error) => {
-        this.storeMessage = error.error.errorMessage;
+        this.storeMessage1 = error.error.errorMessage;
       },
     });
   }

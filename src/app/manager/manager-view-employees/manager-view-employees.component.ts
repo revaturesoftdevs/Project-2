@@ -1,3 +1,4 @@
+import { Manager } from './../manager.model';
 import { AuthService } from './../../user-login/auth.service';
 import { MgrDetails } from './../../user-login/user.model';
 import { Component, OnInit } from '@angular/core';
@@ -60,18 +61,40 @@ export class ManagerViewEmployeesComponent implements OnInit {
   }
 
   addANewEmployee(){
-    this.mgrService.registerEmployee(this.newEmployee).subscribe((response)=>{
+    let mgr = this.authService.getMgrDetails();
+    let newEmpl:Employee={    
+      empId: 0,
+      mgrId: mgr.mgrId,
+      empFirstName:this.newEmployee.empFirstName,
+      empLastName: this.newEmployee.empLastName,
+      empUserName: this.newEmployee.empUserName,
+      empPassword: this.newEmployee.empPassword
+  
+    };
+
+    this.newEmployee={
+      empId: 0,
+      mgrId: 0,
+      empFirstName: "",
+      empLastName: "",
+      empUserName: "",
+      empPassword: ""
+  
+    };
+    this.mgrService.registerEmployee(newEmpl).subscribe((response)=>{
       console.log(response);
       this.loadData();
-      this.newEmployee={
-        empId: 0,
-        mgrId: 0,
-        empFirstName: "",
-        empLastName: "",
-        empUserName: "",
-        empPassword: ""
+      // this.newEmployee={
+      //   empId: 0,
+      //   mgrId: 0,
+      //   empFirstName: "",
+      //   empLastName: "",
+      //   empUserName: "",
+      //   empPassword: ""
     
-      };
+      // };
+
+      console.log(mgr.mgrId);
       this.empRegister=false;
     })
   }

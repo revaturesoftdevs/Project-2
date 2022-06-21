@@ -27,9 +27,12 @@
         </tbody>
       </table>
     </div>
+    <div *ngIf="storeMessage != ''">
+      <h3 class="text-danger">{{ storeMessage }}</h3>
+    </div>
     <div class="container">
       <div class="row mt-5">
-        <div *ngIf="storeMessage == ''">
+        <div *ngIf="storeMessage1 == ''">
           <h2>Resolved Reimbursements</h2>
           <table class="table table-striped">
             <thead>
@@ -55,6 +58,9 @@
               </tr>
             </tbody>
           </table>
+        </div>
+        <div *ngIf="storeMessage1 != ''">
+          <h3 class="text-danger">{{ storeMessage1 }}</h3>
         </div>
         <div class="row mt-5">
           <div class="col-2"></div>
@@ -146,9 +152,7 @@
                   </div>
                 </form>
               </div>
-              <div *ngIf="storeMessage != ''">
-                <h3 class="text-danger">{{ storeMessage }}</h3>
-              </div>
+              
             </div>
           </div>
         </div>

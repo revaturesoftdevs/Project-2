@@ -14,18 +14,7 @@
                     <div class="card m-3">
                         <div class="card-header bg-sucess">Registeration Form</div>
                         <div class="card-body">
-                            <div class="mb-3 mt-3">
-                                <label for="mId" class="form-label">
-                                    Manager Id :
-                                </label>
-                                <input type="text" class="form-control" id="mId"
-                                placeholder="enter manager id"
-                                name="mgrId" [(ngModel)]="newEmployee.mgrId"
-                                #mgrId="ngModel" required>
-                                <div *ngIf="!mgrId.valid && mgrId.touched"
-                                class="text-danger small">Manager Id is Required</div>
-
-                            </div>
+                            
                             <div class="mb-3">
                                 <label for="empFName" class="form-label">First Name :</label>
                                 <input type="text" class="form-control" id="empFName"
@@ -124,6 +113,6 @@
         </div>
         </div>
         <div *ngIf="storeMessage!=''">
-            <h3 class="text-danager">{{ storeMessage }}</h3>
+            <h3 class="text-danger">{{ storeMessage }}</h3>
         </div>
     </div>
