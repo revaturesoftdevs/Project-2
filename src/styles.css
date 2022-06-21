@@ -1,16 +1,18 @@
-body{
-    background-color:#D9EFFC;
+body {
+    background-color: #D9EFFC;
 }
+
 #page-container {
     position: relative;
     min-height: 100vh;
-  }
-  
-.myTable{
-    color:white ;
+}
+
+.myTable {
+    color: white;
     background-color: black;
 }
-.myTbody{
+
+.myTbody {
     background-color: grey;
 }
 
@@ -18,6 +20,7 @@ body{
     padding-left: 300px;
     color: white;
 }
+
 .y {
     padding-left: 50px;
 }
@@ -25,7 +28,7 @@ body{
 .footcol {
     color: white;
     font-size: large;
-    
+
 }
 
 .card {
@@ -33,153 +36,184 @@ body{
     width: 80%;
     background-color: #D3D3D3;
 }
+
 .ab {
     background-color: pink;
     text-align: center;
     width: 100%;
-    margin:20px;    
+    margin: 20px;
 }
-.infocol{
+
+.infocol {
     margin-left: auto;
-  
+
 }
-.loginfo{
-    margin:15px;
+
+.loginfo {
+    margin: 15px;
 }
+
 .mycard {
     height: 250px;
     margin: 100px;
 }
+
 .myform {
     height: 600px;
     padding: 15px;
 }
+
 .txtArea {
     height: 100px;
     width: 500px;
 }
+
 .custlabel {
     font-weight: bold;
     font-size: 18px;
 }
+
 .custinput {
     width: 350px;
     padding-right: 50px;
 }
+
 .btnsub {
     width: 180px;
     margin-left: 50%;
     margin: 20px;
     margin-bottom: 20px;
 }
+
 .mytitle {
     margin: 20px;
     padding-left: 150px;
 }
+
 .employee {
     margin-top: 30px;
 }
+
 .menuitem {
     color: white;
 }
+
 .btncl {
     margin: 40px;
 }
+
 .navbar-nav .active {
     color: white !important;
 }
-.info{
+
+.info {
     margin-bottom: 50px;
 }
+
 .empform {
     height: auto;
     padding: 15px;
 }
-#approvedStatus{
+
+#approvedStatus {
     background-color: green;
 }
-.pendingStatus{
+
+.pendingStatus {
     background-color: red;
 }
-.inputsts{
+
+.inputsts {
     border-color: red;
     outline: red;
 }
-.empdetails{
+
+.empdetails {
     margin: 40px;
 }
-.abfooter{
+
+.abfooter {
     position: absolute;
-    bottom:0;
-    width:100%;
-    height:60px; 
+    bottom: 0;
+    width: 100%;
+    height: 60px;
     color: white;
     font-size: large;
 }
-<<<<<<< HEAD
 
-.login-container{
+
+.login-container {
     margin-top: 5%;
     margin-bottom: 5%;
 }
-.login-form-1{
+
+.login-form-1 {
     padding: 5%;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
 }
-.login-form-1 h3{
+
+.login-form-1 h3 {
     text-align: center;
     color: #333;
 }
-.login-form-2{
+
+.login-form-2 {
     padding: 5%;
     background: #0062cc;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
 }
-.login-form-2 h3{
+
+.login-form-2 h3 {
     text-align: center;
     color: #fff;
 }
-.login-container form{
+
+.login-container form {
     padding: 10%;
 }
-.btnSubmit
-{
+
+.btnSubmit {
     width: 50%;
     border-radius: 1rem;
     padding: 1.5%;
     border: none;
     cursor: pointer;
 }
-.login-form-1 .btnSubmit{
+
+.login-form-1 .btnSubmit {
     font-weight: 600;
     color: #fff;
     background-color: #0062cc;
 }
-.login-form-2 .btnSubmit{
+
+.login-form-2 .btnSubmit {
     font-weight: 600;
     color: #0062cc;
     background-color: #fff;
 }
-.login-form-2 .ForgetPwd{
+
+.login-form-2 .ForgetPwd {
     color: #fff;
     font-weight: 600;
     text-decoration: none;
 }
-.login-form-1 .ForgetPwd{
+
+.login-form-1 .ForgetPwd {
     color: #0062cc;
     font-weight: 600;
     text-decoration: none;
 }
 
 
-.myUpdateProfile{
+.myUpdateProfile {
     width: 50%;
 }
-.btnUpdateSubmit{
+
+.btnUpdateSubmit {
     width: 50%;
     border-radius: 1rem;
     padding: 1.5%;
-    border:rgba(0, 0, 0, 0.2);
+    border: rgba(0, 0, 0, 0.2);
     margin: 5px;
-    
+
 }

@@ -30,18 +30,18 @@ export class EmployeeCreateReimbComponent implements OnInit {
     empPassword: ''
   }
 
-  constructor(private employeeService: EmployeeHttpService, 
-              private router: Router,
-              private authService: AuthService,
-              private employeeHttpService: EmployeeHttpService) { }
+  constructor(private employeeService: EmployeeHttpService,
+    private router: Router,
+    private authService: AuthService,
+    private employeeHttpService: EmployeeHttpService) { }
 
   ngOnInit(): void {
   }
 
-  displayProfile(empId: any){
+  displayProfile(empId: any) {
     let empData = this.authService.getEmpDetails();
-    this.employeeHttpService.getEmployee(empData.empId).subscribe(response=>{
-      this.currentEmp=response;
+    this.employeeHttpService.getEmployee(empData.empId).subscribe(response => {
+      this.currentEmp = response;
     });
   }
 
@@ -68,4 +68,4 @@ export class EmployeeCreateReimbComponent implements OnInit {
 
   }
 }
-}
+
