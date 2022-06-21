@@ -3,7 +3,6 @@ export interface Reimbursement{
     empId:number,
     mgrId:number,
     reimbursementDesc:string,
-    reimbursementStatus:string
+    reimbursementStatus:string,
     reimbursementAmt: number
-
 }

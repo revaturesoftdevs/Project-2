@@ -1,0 +1,93 @@
+<div class="container myUpdateProfile">
+  <div class="card ">
+<form #myForm="ngForm">
+  <div class="card-body">
+    <div class="card-header bg-primary">Update Employee</div>
+    <div class="row justify-content-md-center ">
+  <div class="mb-3 mt-3">
+    <label for="empId" class="form-label">Employee ID:</label>
+    <input 
+    type="text" 
+    class="form-control "
+    value="{{ currentEmp.empId }}"
+    name="empId" 
+    [(ngModel)]="currentEmp.empId"
+    #empId='ngModel'
+    disabled="true">
+  </div>
+  <div class="mb-3 mt-3">
+    <label for="mgrId" class="form-label">Manager ID:</label>
+    <input 
+    type="text" 
+    class="form-control "
+    value="{{ currentEmp.mgrId }}"
+    name="mgrId"
+    [(ngModel)]="currentEmp.mgrId"
+    #mgrId='ngModel'
+    disabled="true">
+  </div>
+    <div class="mb-3 mt-3">
+      <label for="empFirstName" class="form-label">First Name:</label>
+      <input 
+      type="text" 
+      class="form-control "
+      value="{{ currentEmp.empFirstName }}"
+      name="empFirstName" 
+      [(ngModel)]="currentEmp.empFirstName"
+      #empFirstName='ngModel'
+      required>
+      <div *ngIf="!empFirstName.valid && empFirstName.touched" class="text-danger small">
+        first name is required!
+    </div>
+    </div>
+    <div class="mb-3">
+      <label for="empLastName" class="form-label">Last Name:</label>
+      <input 
+      type="text" 
+      class="form-control " 
+      value="{{ currentEmp.empLastName }}"
+      name="empLastName" 
+      [(ngModel)]="currentEmp.empLastName"
+      #empLastName="ngModel"
+      required>
+      <div *ngIf="!empLastName.valid && empLastName.touched" class="text-danger small">
+        last name is required!
+    </div>
+    </div>
+    <div class="mb-3 mt-3">
+      <label for="empUserName" class="form-label ">Username:</label>
+      <input 
+      type="text" 
+      class="form-control " 
+      value="{{ currentEmp.empUserName }}"
+      name="empUserName" 
+      [(ngModel)]="currentEmp.empUserName"
+      #empUserName="ngModel"
+      required>
+      <div *ngIf="!empUserName.valid && empUserName.touched" class="text-danger small">
+        user name is required!
+    </div>
+    </div>
+    <div class="mb-3">
+      <label for="empPassword" class="form-label">Password:</label>
+      <input 
+      type="text" 
+      class="form-control " 
+      value="{{ currentEmp.empPassword }}"
+      name="empPassword" 
+      [(ngModel)]="currentEmp.empPassword"
+      #empPassword="ngModel"
+      required>
+      <div *ngIf="!empPassword.valid && empPassword.touched" class="text-danger small">
+        password is required!
+    </div>
+    </div>
+  </div></div>
+  <div class="card-footer text-center">
+    <button type="button" class="btn btn-primary  btnUpdateSubmit" (click)="updatedEmployee()"
+    [disabled]="!myForm.valid">Edit Profile</button>
+  </div>
+  </form>
+  
+</div>
+</div>

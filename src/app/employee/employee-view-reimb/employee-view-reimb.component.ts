@@ -1,62 +1,93 @@
 import { Component, OnInit } from '@angular/core';
 import { Reimbursement } from './reimbursement.model';
 import { EmployeeHttpService } from '../employee-http.service';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/user-login/auth.service';
+import { EmpDetails } from 'src/app/user-login/user.model';
 
 @Component({
   selector: 'employee-view-reimb',
   templateUrl: './employee-view-reimb.component.html',
-  styleUrls: ['./employee-view-reimb.component.css']
+  styleUrls: ['./employee-view-reimb.component.css'],
 })
 export class EmployeeViewReimbComponent implements OnInit {
+  storeMessage: string = '';
+  storeMessage1: string = '';
+  pendReimb: Reimbursement[];
+  resolvedReimb: Reimbursement[];
 
-  pendReimb: Reimbursement[];  
-  shouldDisplay:boolean= false;
-  testEmp =5;
-  newReimb:Reimbursement ={
+  shouldDisplay: boolean = false;
+
+  newReimb: Reimbursement = {
     reimbursementId: 0,
-    empId:0,
-    mgrId:0,
-    reimbursementDesc:'',
-    reimbursementStatus:'',
-    reimbursementAmt: 0
+    empId: 0,
+    mgrId: 0,
+    reimbursementDesc: '',
+    reimbursementStatus: '',
+    reimbursementAmt: 0,
+  };
 
-    };
-  
-  constructor(private employeeService:EmployeeHttpService) {
+  constructor(
+    private employeeService: EmployeeHttpService,
+    private router: Router,
+    private authService: AuthService
+  ) {
+    this.resolvedReimb = [];
     this.pendReimb = [];
-   }
-
-  getPendReimb(){
-    this.employeeService.getPendReimb();
   }
-  displayForm(){
-    if(this.shouldDisplay){
+
+  ngOnInit(): void {
+    this.employeeService.getPendReimb().subscribe({
+      next: (response) => {
+        this.pendReimb = response;
+      },
+      error: (error) => {
+        this.storeMessage = error.error.errorMessage;
+      },
+    });
+
+    this.employeeService.getResolvedReimb().subscribe({
+      next: (response) => {
+        this.resolvedReimb = response;
+      },
+      error: (error) => {
+        this.storeMessage1 = error.error.errorMessage;
+      },
+    });
+  }
+
+  displayForm() {
+    if (this.shouldDisplay) {
       this.shouldDisplay = false;
-    }else{
+    } else {
       this.shouldDisplay = true;
     }
   }
 
-  addReimb(){
-    this.employeeService.addReimb(this.newReimb).subscribe((response)=>{
-      console.log(response);
-      
-      this.newReimb ={
-        reimbursementId: 0,
-        empId:0,
-        mgrId:0,
-        reimbursementDesc:'',
-        reimbursementStatus:'',
-        reimbursementAmt: 0
-    
-      }
+  addReimb() {
+    let empSession = this.authService.getEmpDetails();
 
+    let newEmpReimb: Reimbursement = {
+      reimbursementId: 0,
+      empId: empSession.empId,
+      mgrId: empSession.mgrId,
+      reimbursementDesc: this.newReimb.reimbursementDesc,
+      reimbursementStatus: 'pending',
+      reimbursementAmt: this.newReimb.reimbursementAmt,
+    };
+
+    this.newReimb = {
+      reimbursementId: 0,
+      empId: 0,
+      mgrId: 0,
+      reimbursementDesc: '',
+      reimbursementStatus: '',
+      reimbursementAmt: 0,
+    };
+
+    this.employeeService.addReimb(newEmpReimb).subscribe((response) => {
+      this.ngOnInit();
       this.shouldDisplay = false;
-    })
-
+    });
   }
-  ngOnInit(): void {
-    this.employeeService.getPendReimb().subscribe((response)=>{ this.pendReimb = response});
-   }
- 
 }

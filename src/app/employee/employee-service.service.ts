@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { EmpDetails } from '../user-login/user.model';
 import { Reimbursement } from './employee-view-reimb/reimbursement.model';
 
 @Injectable({
@@ -8,16 +9,24 @@ import { Reimbursement } from './employee-view-reimb/reimbursement.model';
 })
 export class EmployeeServiceService {
 
-  baseUrl: string = "http://localhost:1111/";
+  baseUrl: string = "http://localhost:7474/";
 
   constructor(private http: HttpClient) { }
 
+  employeeProfile(): Observable<EmpDetails[]>{
+    return this.http.get<EmpDetails[]>(this.baseUrl+"/profile/");
+   // return this.http.get<EmpDetails[]>(this.baseUrl+"/profile"+'/'+empId);
+  }
+
+ 
+
   getAllPendingReimbursements(): Observable<Reimbursement[]> {
 
-    return this.http.get<Reimbursement[]>(this.baseUrl + "EmpPendingReimbursements/1");
+    return this.http.get<Reimbursement[]>(this.baseUrl + "/EmpPendingReimbursements/1");
   }
 
   createReimbursement(newReimbursement: Reimbursement) {
-    return this.http.post<Reimbursement>(this.baseUrl + "addReimbursement", newReimbursement);
+    return this.http.post<Reimbursement>(this.baseUrl + "/addReimbursement", newReimbursement);
   }
+
 }

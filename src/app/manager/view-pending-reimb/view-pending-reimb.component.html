@@ -1,3 +1,4 @@
+<div *ngIf="storeMessage==''">
 <table class="table table-striped">
     <thead>
         <tr>
@@ -10,7 +11,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let req of pendingReimbu" >
+        <tr *ngFor="let req of pendingReimb" >
             <td>{{req.reimbursementId}}</td>
             <td>{{req.empId}}</td>
             <td>{{req.mgrId}}</td>
@@ -18,9 +19,13 @@
             <td>{{req.reimbursementAmt}}</td>
             <td>{{req.reimbursementStatus}}</td>
             <td><button type="submit" class="btn btn-primary"
-                    (click)="approved()">Approve</button></td>
+                    (click)="approved(req.empId,req.reimbursementId)">Approve</button></td>
             <td><button type="submit" class="btn btn-danger"
-                    (click)="denied()">Deny</button></td>
+                    (click)="denied(req.empId,req.reimbursementId)">Deny</button></td>
         </tr>
-        <!--approved(req.empId,req.reimbursementId)-->
-        <!--denied(req.empId,req.reimbursementId)-->
+        </tbody>
+        </table>
+    </div>
+    <div *ngIf="storeMessage!=''">
+        <h3 class="text-danger">{{ storeMessage }}</h3>
+    </div>

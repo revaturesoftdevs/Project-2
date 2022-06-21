@@ -3,50 +3,56 @@ import { HttpClient } from '@angular/common/http';
 import { Manager } from './manager.model';
 import { Observable } from 'rxjs';
 import { Employee } from '../employee/employee.model';
-import { Reimbursement } from '../employee/employee-view-reimb/reimbursment-model';
+import { Reimbursement } from '../employee/employee-view-reimb/reimbursement.model';
+import { AuthService } from '../user-login/auth.service';
+
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ManagerServiceService {
+  baseUrl: string = 'http://localhost:7272/api';
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
-
-
-  baseUrl: string = "http://localhost:7474";
-  constructor(private http: HttpClient) { }
-
-  currentAllEmployees(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(this.baseUrl + "/AllEmployees/3");
+  currentAllEmployees(mgrId: number): Observable<Employee[]> {
+    return this.http.get<Employee[]>(this.baseUrl + '/all-employees/' + mgrId);
   }
 
   //view individual employee
 
-  goToViewEmployee(): Observable<Reimbursement> {
+  
+  registerEmployee(newEmployee:Employee):Observable<Employee>{
+    return this.http.post<Employee>(this.baseUrl+"/register-employee", newEmployee);
+  }
 
-    return this.http.get<Reimbursement>(this.baseUrl + "/IndividualReimbursements/1/5");
+  goToViewEmployee(mgrId:number,empId:number): Observable<Reimbursement[]> {
+    let mgrData = this.authService.getMgrDetails();
+    return this.http.get<Reimbursement[]>(this.baseUrl + "/individual-employee-reimbursement/"+mgrId+'/'+empId);
     // return this.http.get<Reimbursement[]>(this.baseUrl+"/IndividualReimbursements/"+mgrId+'/'+empId);
   }
   resolvedReim(): Observable<Reimbursement[]> {
-    return this.http.get<Reimbursement[]>(this.baseUrl + "/ResolvedReimbursements/1");
-  }
-  // resolvedReim(mgrId: number){
-
-  //   return this.http.get<Reimbursement[]>(this.baseUrl+'/ResolvedReimbursements'+mgrId);
-  // }
-
-  // getPendingReimMgr(mgrId: number){
-
-  //   return this.http.get<Reimbursement[]>(this.baseUrl+'/PendingReimbursements'+mgrId);
-  // }
-  pendingReim(): Observable<Reimbursement[]>{
-    return this.http.get<Reimbursement[]>(this.baseUrl+"/PendingReimbursements/2");
+    let mgrData = this.authService.getMgrDetails();
+    return this.http.get<Reimbursement[]>(
+      this.baseUrl + '/resolved-reimbursements/' + mgrData.mgrId
+    );
   }
 
-approvePending(): Observable<boolean>{
-  return this.http.put<boolean>(this.baseUrl+"/approveReimbursement/1/19","");
-}
+  pendingReim(mgrId: number): Observable<Reimbursement[]> {
+    return this.http.get<Reimbursement[]>(
+      this.baseUrl + '/pending-reimbursements/' + mgrId
+    );
+  }
 
-deniedPending():Observable<boolean>{
-  return this.http.put<boolean>(this.baseUrl+"/denyReimbursement/2/22","");
-}
+  approvePending(empId: number, reimbursmentId: number): Observable<boolean> {
+    return this.http.put<boolean>(
+      this.baseUrl + '/approve-reimbursement/' + empId + '/' + reimbursmentId,
+      ''
+    );
+  }
 
+  deniedPending(empId: number, reimbursmentId: number): Observable<boolean> {
+    return this.http.put<boolean>(
+      this.baseUrl + '/deny-reimbursement/' + empId + '/' + reimbursmentId,
+      ''
+    );
+  }
 }

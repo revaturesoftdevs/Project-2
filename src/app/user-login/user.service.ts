@@ -8,8 +8,8 @@ import { EmpDetails, MgrDetails } from './user.model';
 })
 export class UserService {
 
-  baseUrlEmp: string = "http://localhost:7474/loginEmp";
-  baseUrlMgr: string = "http://localhost:7474/loginManager";
+  baseUrlEmp: string = "http://localhost:7272/api/login-employee";
+  baseUrlMgr: string = "http://localhost:7272/api/login-manager";
 
   constructor(private http: HttpClient) { }
 

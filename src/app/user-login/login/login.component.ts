@@ -7,12 +7,11 @@ import { UserService } from '../user.service';
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-
-  invalidMessage: string = "";
-  invalidMessage2: string = "";
+  invalidMessage: string = '';
+  invalidMessage2: string = '';
 
   empDetails: EmpDetails = {
     empId: 0,
@@ -20,47 +19,54 @@ export class LoginComponent implements OnInit {
     empFirstName: '',
     empLastName: '',
     empUserName: '',
-    empPassword: ''
-}
+    empPassword: '',
+  };
 
-mgrDetails: MgrDetails = {
+  mgrDetails: MgrDetails = {
     mgrId: 0,
     mgrFirstName: '',
     mgrLastName: '',
     mgrUserName: '',
-    mgrPassword: ''
-}
+    mgrPassword: '',
+  };
 
-  constructor(private userService: UserService, 
-              private authService: AuthService, 
-              private router: Router) { }
+  constructor(
+    private userService: UserService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+
   }
 
-  empLoginValidation(){
-    this.userService.validateEmp(this.empDetails).subscribe((response)=>{
-      console.log(response);
-      if(response.empId != 0 ){
+  empLoginValidation() {
+    this.userService.validateEmp(this.empDetails).subscribe((response) => {
+      if (response.empId != 0) {
         this.authService.storeEmpDetails(response);
+        // let data = this.authService.getEmpDetails();
+        // let employeeId = data.empId;
+        // console.log(employeeId)
         this.authService.isLoggedIn = true;
-        this.router.navigate(['employee-profile'])
-      }else{
-        this.invalidMessage = "Invalid Username/Password";
+        this.authService.isEmployee = true;
+        this.router.navigate(['employee-profile']);
+      } else {
+        this.invalidMessage = 'Invalid Username/Password';
       }
     });
   }
 
-  mgrLoginValidation(){
-    this.userService.validateMgr(this.mgrDetails).subscribe((response)=>{
-      console.log(response);
-      if(response.mgrId != 0 ){
+  mgrLoginValidation() {
+    this.userService.validateMgr(this.mgrDetails).subscribe((response) => {
+      if (response.mgrId != 0) {
         this.authService.storeMgrDetails(response);
         this.authService.isLoggedIn = true;
-        this.router.navigate(['manager-landingpage'])
+        this.authService.isManager=true;
+        this.router.navigate(['manager-view-employees'])
       }else{
         this.invalidMessage2 = "Invalid Username/Password";
       }
     });
   }
+
 }

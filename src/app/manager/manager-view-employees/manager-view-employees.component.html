@@ -1,4 +1,58 @@
 <div class="container">
+    <div class="row mt-5">
+        <div class="col-2">
+        </div>
+        <div class="col-8">
+            <button
+                type="button"
+                class="btn btn-success"
+                    (click)="registerEmployee()">
+                    Register Employee    
+            </button>
+            <div *ngIf="empRegister">
+                <form>
+                    <div class="card m-3">
+                        <div class="card-header bg-sucess">Registeration Form</div>
+                        <div class="card-body">
+                            
+                            <div class="mb-3">
+                                <label for="empFName" class="form-label">First Name :</label>
+                                <input type="text" class="form-control" id="empFName"
+                                placeholder="Enter employee's first name:" name="firstName" [(ngModel)]="newEmployee.empFirstName" #empFirstName="ngModel" required>
+                                <div *ngIf="!empFirstName.valid && empFirstName.touched" class="text-danger small">First name required</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="empLName" class="form-label">Last Name :</label>
+                                <input type="text" class="form-control" id="empLName"
+                                placeholder="Enter employee's Last name:" name="lastName" [(ngModel)]="newEmployee.empLastName" #empLastName="ngModel" required>
+                                <div *ngIf="!empLastName.valid && empLastName.touched" class="text-danger small">Last name required</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="empUName" class="form-label">Email :</label>
+                                <input type="text" class="form-control" id="empUName"
+                                placeholder="Enter employee's email:" name="empEmail" [(ngModel)]="newEmployee.empUserName" #newEmpEmail="ngModel" required>
+                                <div *ngIf="!newEmpEmail.valid && newEmpEmail.touched" class="text-danger small">Email required</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="empPwd" class="form-label">Password :</label>
+                                <input type="text" class="form-control" id="empPwd"
+                                placeholder="Enter Password" name="empPassword" [(ngModel)]="newEmployee.empPassword" #newEmpPwd="ngModel" required>
+                                <div *ngIf="!newEmpPwd.valid && newEmpPwd.touched" class="text-danger small">First name required</div>
+                            </div>
+                            
+                        </div>
+                        <div class="card-footer bg-warning">
+                            <button 
+                                type="button" 
+                                class="btn btn-success" 
+                                (click)="addANewEmployee()">Register Employee</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <h3>All Employees</h3>
     <table class="table table-striped">
         <thead class="thead-dark myTable">
@@ -22,12 +76,43 @@
                         <button
                             type="button"
                             class="btn btn-primary"
-                            (click)="goToViewEmployee()">
+                            (click)="goToViewEmployee(emp.mgrId,emp.empId)">
                                 <i class="material-icons">View Employee</i>
                         </button>
                    </td>                
                 </tr>
             </tbody>
-        </table>
-        
+        </table>        
+    </div>
+    
+        <div *ngIf="shouldDisplay">
+            <div class="container">
+                <div *ngIf="storeMessage==''">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Reimbursement Id</th>
+                    <th>Employee Id</th>
+                    <th>Manager Id</th>
+                    <th>Reimbursement Description</th>
+                    <th>Reimbursement Amount</th>
+                    <th>Reimbursement Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let req of allRequests" >
+                    <td>{{req.reimbursementId}}</td>
+                    <td>{{req.empId}}</td>
+                    <td>{{req.mgrId}}</td>
+                    <td>{{req.reimbursementDesc}}</td>
+                    <td>{{req.reimbursementAmt}}</td>
+                    <td>{{req.reimbursementStatus}}</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        </div>
+        <div *ngIf="storeMessage!=''">
+            <h3 class="text-danger">{{ storeMessage }}</h3>
+        </div>
     </div>

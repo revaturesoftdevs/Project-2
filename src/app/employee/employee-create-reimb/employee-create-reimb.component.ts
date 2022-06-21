@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmployeeHttpService } from '../employee-http.service';
 import { Reimbursement } from '../employee-view-reimb/reimbursement.model';
+import { EmpDetails } from 'src/app/user-login/user.model';
+import { AuthService } from 'src/app/user-login/auth.service';
 
 @Component({
   selector: 'employee-create-reimb',
@@ -19,9 +21,28 @@ export class EmployeeCreateReimbComponent implements OnInit {
     reimbursementAmt: 0
   }
 
-  constructor(private employeeService: EmployeeHttpService, private router: Router) { }
+  currentEmp: EmpDetails = {
+    empId: 0,
+    mgrId: 0,
+    empFirstName: '',
+    empLastName: '',
+    empUserName: '',
+    empPassword: ''
+  }
+
+  constructor(private employeeService: EmployeeHttpService, 
+              private router: Router,
+              private authService: AuthService,
+              private employeeHttpService: EmployeeHttpService) { }
 
   ngOnInit(): void {
+  }
+
+  displayProfile(empId: any){
+    let empData = this.authService.getEmpDetails();
+    this.employeeHttpService.getEmployee(empData.empId).subscribe(response=>{
+      this.currentEmp=response;
+    });
   }
 
   createANewReimbursement() {
@@ -46,4 +67,5 @@ export class EmployeeCreateReimbComponent implements OnInit {
     })
 
   }
+}
 }

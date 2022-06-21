@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmpDetails } from 'src/app/user-login/user.model';
 import { EmployeeHttpService } from '../employee-http.service';
+import { UserService } from 'src/app/user-login/user.service';
+import { EmployeeServiceService } from '../employee-service.service';
+import { Employee } from '../employee.model';
+import { AuthService } from 'src/app/user-login/auth.service';
+
 
 @Component({
   selector: 'employee-profile',
@@ -10,7 +15,8 @@ import { EmployeeHttpService } from '../employee-http.service';
 })
 export class EmployeeProfileComponent implements OnInit {
 
-  updateEmployee: EmpDetails = {
+
+  empModel: EmpDetails = {
     empId: 0,
     mgrId: 0,
     empFirstName: '',
@@ -21,7 +27,25 @@ export class EmployeeProfileComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private employeeHttpService: EmployeeHttpService,
-              private router: Router) { }
+              private employeeService: EmployeeServiceService,
+              private router: Router,
+              private userService: UserService, 
+              private empService: EmployeeServiceService,
+              private authService: AuthService) {
+               }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.displayProfile(1);
+  }
+  update(){
+    this.router.navigate(['update-profile']);
+  }
+
+  displayProfile(empId: any){
+    let empData = this.authService.getEmpDetails();
+    this.employeeHttpService.getEmployee(empData.empId).subscribe(response=>{
+      this.empModel=response;
+    });
+  }
 }
+
